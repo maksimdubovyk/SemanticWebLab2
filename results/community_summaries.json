@@ -1,0 +1,167 @@
+[
+  {
+    "community": 3,
+    "size": 20,
+    "entities": [
+      "CERN",
+      "ENQUIRE",
+      "HTML",
+      "HTTP",
+      "Inrupt",
+      "Lassila",
+      "Linked data",
+      "MIT Computer Science and Artificial Intelligence Laboratory",
+      "Massachusetts Institute of Technology",
+      "Nigel Shadbolt",
+      "Open Data Institute",
+      "Plessey",
+      "Rosemary Leith",
+      "Stephen Witt",
+      "Tim Berners-Lee",
+      "University of Oxford",
+      "University of Southampton",
+      "Web Science Research Initiative",
+      "World Wide Web",
+      "World Wide Web Foundation"
+    ],
+    "facts_used": 28,
+    "summary": "Ця спільнота об'єднана навколо еволюції всесвітньої павутини, семантичного веб та пов'язаних технологій. Центральною фігурою в ній є Тім Бернерс-Лі, який створив такі ключові технології та концепції, як Всесвітній веб, HTML, HTTP, зв'язні дані (Linked data) та заснував Open Data Institute й Inrupt. Він підтримує зв'язки з багатьма інституціями, адже був афілійований з CERN, Массачусетським технологічним інститутом (зокрема Лабораторією комп'ютерних наук та штучного інтелекту), а також університетами Оксфорда та Саутгемптона. Крім того, він співпрацював із дослідниками та діячами, такими як Найджел Шадболт, Лассіла, Розмарі Лейт і Стівен Вітт. Технології спільноти, зокрема зв'язні дані, безпосередньо базуються на протоколі HTTP та Ресурсному описовому фреймворку (Resource Description Framework)."
+  },
+  {
+    "community": 1,
+    "size": 19,
+    "entities": [
+      "Corese",
+      "DAML+OIL",
+      "FOAF",
+      "Håkon Wium Lie",
+      "Jeffrey M. Jaffe",
+      "LV2",
+      "NEPOMUK",
+      "Platform for Internet Content Selection",
+      "RDF Schema",
+      "Resource Description Framework",
+      "SHACL",
+      "SPIN",
+      "Semantic Web",
+      "Seth Dobbs",
+      "Smart-M3",
+      "Turtle",
+      "Web Ontology Language",
+      "WebPlatform",
+      "World Wide Web Consortium"
+    ],
+    "facts_used": 32,
+    "summary": "Ця спільнота об'єднана навколо екосистеми Семантичного павутиння та технологій організації й опису даних у Всесвітньому павутинні. Центральною сутністю тут виступає Консорціум Всесвітнього павутина (W3C), який стандартизує ключові технології, зокрема мову Resource Description Framework (RDF). На базі RDF побудовано більшість пов'язаних елементів спільноти, таких як RDF Schema, Web Ontology Language, SPARQL, SHACL, FOAF, NEPOMUK, Corese, Smart-M3 та Turtle. Окрім внутрішніх зв'язків, ця спільнота тісно пов'язана з окремими діячами та зовнішніми сутностями: зокрема, W3C пов'язаний з такими особами, як Håkon Wium Lie, Jeffrey M. Jaffe та Seth Dobbs, а також створив платформу WebPlatform. Водночас базовий стандарт RDF походить від Платформи вибору контенту в Інтернеті (Platform for Internet Content Selection) і своєю чергою слугує основою для таких зовнішніх проєктів, як DBpedia, Linked data та YAGO."
+  },
+  {
+    "community": 9,
+    "size": 13,
+    "entities": [
+      "Bing",
+      "GeoNames",
+      "GoodRelations",
+      "Marc Wirk",
+      "Max Planck Institute for Informatics",
+      "OpenCyc",
+      "SUMO",
+      "Schema.org",
+      "UMBEL",
+      "WordNet",
+      "YAGO",
+      "Yahoo!",
+      "microformats"
+    ],
+    "facts_used": 22,
+    "summary": "Ця спільнота об'єднує ключові словники, бази знань, онтології та ініціативи семантичного вебу, які тісно взаємодіють між собою через процеси створення, запозичення та інтеграції даних. Центральним елементом тут виступає ініціатива Schema.org, яку спільно створили Bing, Google та Yahoo! у 2011 році, бачачи її побудованою на GoodRelations та пов'язаною з такими джерелами, як OpenCyc і microformats. Ще однією важливою центральною сутністю є YAGO, створена Максом Планком Інститутом інформатики на основі ресурсів Resource Description Framework, GeoNames (створеного Марком Вірком у 2005 році), WordNet, а також самих Schema.org та Wikidata. Серед зовнішніх зв'язків спільноти виділяються онтологія UMBEL (похідна від OpenCyc), яка пов'язана з DBpedia та YAGO, а сам YAGO також має зв'язки з DBpedia та SUMO. Крім того, Schema.org зазнала впливу від FOAF, а YAGO спирається на інформацію з Вікіпедії."
+  },
+  {
+    "community": 7,
+    "size": 13,
+    "entities": [
+      "Freebase",
+      "Google",
+      "Google Knowledge Graph",
+      "Graphd",
+      "JSON-LD",
+      "John Giannandrea",
+      "Kurt Bollacker",
+      "MediaWiki",
+      "Metaweb",
+      "Metaweb Query Language",
+      "Veda Hlubinka-Cook",
+      "Wikidata",
+      "Wikimedia Deutschland"
+    ],
+    "facts_used": 19,
+    "summary": "Ця спільнота об'єднана навколо розвитку баз знань, семантичних технологій та компанії Google, яка відіграє в ній центральну роль. Компанія Google об'єднує навколо себе ключові проєкти, зокрема придбавши у 2010 році компанію Metaweb, яка створила Freebase і Graphd за участю таких постатей, як Курт Боллакер, Джон Джаннандреа та Веда Глубінка-Кук. На основі цих технологій Google створила Google Knowledge Graph, який спирається на Freebase і DBpedia. Зовні спільнота пов'язана з Wikidata, що розробляється за підтримки Wikimedia Deutschland і на основі якої створено YAGO. Також Freebase була замінена на Wikidata у 2014 році, а сама Wikidata частково походить від Freebase і функціонує на платформі MediaWiki."
+  },
+  {
+    "community": 10,
+    "size": 9,
+    "entities": [
+      "Christian Bizer",
+      "DBpedia",
+      "Georgi Kobilarov",
+      "IBM Watson",
+      "Jens Lehmann",
+      "Richard Cyganiak",
+      "Sören Auer",
+      "Wikipedia",
+      "Zachary Ives"
+    ],
+    "facts_used": 14,
+    "summary": "Ця спільнота об'єднана навколо створення та функціонування проєкту DBpedia, який є її центральним елементом. Проєкт було започатковано у 2007 році групою дослідників і розробників, серед яких Крістіан Бізер, Георгій Кобіларов, Єнс Леманн, Річард Циганяк, Сьорен Ауер та Захарі Айвз. DBpedia безпосередньо походить із Вікіпедії та побудована на ключових технологіях семантичного вебу — Resource Description Framework (RDF) і SPARQL. Із зовнішніми сутностями ця спільнота пов'язана завдяки тому, що на DBpedia спираються такі відомі системи, як IBM Watson та Google Knowledge Graph (з 2012 року). Крім того, проєкт має зв'язки з іншими зовнішніми сутностями, зокрема з YAGO (яка також походить із Вікіпедії) та UMBEL."
+  },
+  {
+    "community": 13,
+    "size": 6,
+    "entities": [
+      "RDF Data Access Working Group",
+      "RDQL",
+      "SPARQL",
+      "SPARUL",
+      "XQuery",
+      "XSPARQL"
+    ],
+    "facts_used": 8,
+    "summary": "Ця спільнота об'єднана навколо мови запитів SPARQL, яка є центральним елементом для роботи з даними у форматі RDF та побудови сучасних семантичних технологій. Сама мова SPARQL була створена на основі фреймворку RDF і замінила застарілу мову RDQL, а її стандартизацією займалися Консорціум Всесвітнього павутини (W3C) та Робоча група з доступу до даних RDF. Навколо SPARQL формується екосистема похідних технологій, зокрема мови оновлення даних SPARUL та гібридної мови XSPARQL, яка також інтегрує можливості XQuery. До зовнішніх сутностей спільноти належить проєкт DBpedia, який побудований на основі SPARQL. Також зовнішнім зв'язком є Консорціум Всесвітнього павутини (W3C), що брав участь у стандартизації центральної технології."
+  },
+  {
+    "community": 15,
+    "size": 5,
+    "entities": [
+      "Apple",
+      "Meta Content Framework",
+      "Netscape",
+      "Ramanathan V. Guha",
+      "Tim Bray"
+    ],
+    "facts_used": 4,
+    "summary": "Ця спільнота об'єднана навколо розробки та створення технології Meta Content Framework. Центральною постаттю в ній є Раманатан В. Гуха, який створив цей фреймворк і був пов'язаний з компанією Apple. Іншим ключовим розробником Meta Content Framework є Тім Брей, який також мав робочі зв'язки з компанією Netscape. Через цих ключових діячів спільнота безпосередньо пов'язана із зовнішніми технологічними компаніями Apple та Netscape."
+  },
+  {
+    "community": 4,
+    "size": 4,
+    "entities": [
+      "DARPA",
+      "Guus Schreiber",
+      "James Hendler",
+      "Web-Ontology Working Group"
+    ],
+    "facts_used": 5,
+    "summary": "Ця спільнота об'єднана навколо досліджень та розробки онтологій у межах ініціатив Семантичного павутиння. Центральною фігурою в ній є Джеймс Гендлер (James Hendler), який брав участь у робочій групі з веб-онтологій у 2001 році та був афілійований із DARPA у 2000 році. Гуус Шрайбер (Guus Schreiber) також пов'язаний із робочою групою з веб-онтологій у 2001 році та співпрацював із Джеймсом Гендлером того ж року. Крім того, Джеймс Гендлер співпрацював із Тімом Бернерсом-Лі у 2001 році, що забезпечує зв'язок спільноти з цим зовнішнім діячем. Через організацію DARPA спільнота також виходить за власні межі до оборонних та дослідницьких структур США."
+  },
+  {
+    "community": 16,
+    "size": 4,
+    "entities": [
+      "Cyc",
+      "Cycorp",
+      "Douglas Lenat",
+      "Russell Greiner"
+    ],
+    "facts_used": 4,
+    "summary": "Ця спільнота об'єднана навколо розробки масштабного проєкту штучного інтелекту під назвою Cyc та ключової постаті в цій галузі — Дугласа Лената. Центральним елементом тут є сам Дуглас Ленат, який у 1984 році створив Cyc, а у 1995 році був афілійований з компанією Cycorp. Ця компанія, своєю чергою, підтримує проєкт Cyc. Крім того, спільнота має зв'язок із зовнішніми сутностями через наукову співпрацю Дугласа Лената з Расселом Грейнером у 1979 році."
+  }
+]

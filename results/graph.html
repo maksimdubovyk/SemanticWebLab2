@@ -1,0 +1,444 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 850px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 850px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": 1, "id": "Semantic Web", "label": "Semantic Web", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 5}, {"group": 1, "id": "World Wide Web Consortium", "label": "World Wide Web Consortium", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 10}, {"group": 1, "id": "Resource Description Framework", "label": "Resource Description Framework", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 15}, {"group": 1, "id": "Web Ontology Language", "label": "Web Ontology Language", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 5}, {"group": 3, "id": "Tim Berners-Lee", "label": "Tim Berners-Lee", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 23}, {"group": 4, "id": "James Hendler", "label": "James Hendler", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 4", "value": 5}, {"group": 3, "id": "Lassila", "label": "Lassila", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 1, "id": "Corese", "label": "Corese", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "RDF Schema", "label": "RDF Schema", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 3}, {"group": 6, "id": "Tim O\u0027Reilly", "label": "Tim O\u0027Reilly", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 6", "value": 2}, {"group": 6, "id": "Web 2.0", "label": "Web 2.0", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 6", "value": 2}, {"group": 3, "id": "Linked data", "label": "Linked data", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 4}, {"group": 3, "id": "HTTP", "label": "HTTP", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 3}, {"group": 8, "id": "SIMILE project", "label": "SIMILE project", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 8", "value": 2}, {"group": 8, "id": "Linking Open Data", "label": "Linking Open Data", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 8", "value": 2}, {"group": 9, "id": "UMBEL", "label": "UMBEL", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 4}, {"group": 9, "id": "OpenCyc", "label": "OpenCyc", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 3}, {"group": 10, "id": "DBpedia", "label": "DBpedia", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 14}, {"group": 9, "id": "YAGO", "label": "YAGO", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 11}, {"group": 10, "id": "Wikipedia", "label": "Wikipedia", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 3}, {"group": 1, "id": "Turtle", "label": "Turtle", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 3}, {"group": 13, "id": "SPARQL", "label": "SPARQL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 8}, {"group": 1, "id": "SHACL", "label": "SHACL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 3}, {"group": 1, "id": "Platform for Internet Content Selection", "label": "Platform for Internet Content Selection", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 15, "id": "Ramanathan V. Guha", "label": "Ramanathan V. Guha", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 15", "value": 3}, {"group": 15, "id": "Meta Content Framework", "label": "Meta Content Framework", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 15", "value": 3}, {"group": 15, "id": "Tim Bray", "label": "Tim Bray", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 15", "value": 3}, {"group": 15, "id": "Apple", "label": "Apple", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 15", "value": 2}, {"group": 15, "id": "Netscape", "label": "Netscape", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 15", "value": 2}, {"group": 13, "id": "RDQL", "label": "RDQL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 2}, {"group": 1, "id": "SPIN", "label": "SPIN", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "FOAF", "label": "FOAF", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 3}, {"group": 0, "id": "Microsoft", "label": "Microsoft", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 0", "value": 2}, {"group": 0, "id": "Connected Services Framework", "label": "Connected Services Framework", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 0", "value": 2}, {"group": 1, "id": "NEPOMUK", "label": "NEPOMUK", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "Smart-M3", "label": "Smart-M3", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "LV2", "label": "LV2", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "DAML+OIL", "label": "DAML+OIL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 4, "id": "DARPA", "label": "DARPA", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 4", "value": 2}, {"group": 4, "id": "Web-Ontology Working Group", "label": "Web-Ontology Working Group", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 4", "value": 3}, {"group": 4, "id": "Guus Schreiber", "label": "Guus Schreiber", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 4", "value": 3}, {"group": 13, "id": "RDF Data Access Working Group", "label": "RDF Data Access Working Group", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 2}, {"group": 2, "id": "GeoSPARQL", "label": "GeoSPARQL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 2", "value": 2}, {"group": 2, "id": "Open Geospatial Consortium", "label": "Open Geospatial Consortium", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 2", "value": 2}, {"group": 13, "id": "SPARUL", "label": "SPARUL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 2}, {"group": 13, "id": "XSPARQL", "label": "XSPARQL", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 3}, {"group": 13, "id": "XQuery", "label": "XQuery", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 13", "value": 2}, {"group": 3, "id": "World Wide Web", "label": "World Wide Web", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "HTML", "label": "HTML", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "University of Oxford", "label": "University of Oxford", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Massachusetts Institute of Technology", "label": "Massachusetts Institute of Technology", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Rosemary Leith", "label": "Rosemary Leith", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "World Wide Web Foundation", "label": "World Wide Web Foundation", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "MIT Computer Science and Artificial Intelligence Laboratory", "label": "MIT Computer Science and Artificial Intelligence Laboratory", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Web Science Research Initiative", "label": "Web Science Research Initiative", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "ENQUIRE", "label": "ENQUIRE", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "University of Southampton", "label": "University of Southampton", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Nigel Shadbolt", "label": "Nigel Shadbolt", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Open Data Institute", "label": "Open Data Institute", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Inrupt", "label": "Inrupt", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Plessey", "label": "Plessey", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "CERN", "label": "CERN", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 3, "id": "Stephen Witt", "label": "Stephen Witt", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 3", "value": 2}, {"group": 1, "id": "Seth Dobbs", "label": "Seth Dobbs", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "Jeffrey M. Jaffe", "label": "Jeffrey M. Jaffe", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "WebPlatform", "label": "WebPlatform", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 1, "id": "H\u00e5kon Wium Lie", "label": "H\u00e5kon Wium Lie", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 1", "value": 2}, {"group": 10, "id": "IBM Watson", "label": "IBM Watson", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 5, "id": "Free University of Berlin", "label": "Free University of Berlin", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 5", "value": 2}, {"group": 5, "id": "DBpedia Spotlight", "label": "DBpedia Spotlight", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 5", "value": 2}, {"group": 10, "id": "S\u00f6ren Auer", "label": "S\u00f6ren Auer", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 10, "id": "Christian Bizer", "label": "Christian Bizer", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 10, "id": "Georgi Kobilarov", "label": "Georgi Kobilarov", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 10, "id": "Jens Lehmann", "label": "Jens Lehmann", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 10, "id": "Richard Cyganiak", "label": "Richard Cyganiak", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 10, "id": "Zachary Ives", "label": "Zachary Ives", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 10", "value": 2}, {"group": 7, "id": "Wikidata", "label": "Wikidata", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 6}, {"group": 7, "id": "MediaWiki", "label": "MediaWiki", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 7, "id": "Freebase", "label": "Freebase", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 6}, {"group": 7, "id": "Wikimedia Deutschland", "label": "Wikimedia Deutschland", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 11, "id": "Wikidata Query Service", "label": "Wikidata Query Service", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 11", "value": 2}, {"group": 11, "id": "Blazegraph", "label": "Blazegraph", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 11", "value": 2}, {"group": 7, "id": "Metaweb", "label": "Metaweb", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 8}, {"group": 7, "id": "Graphd", "label": "Graphd", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 7, "id": "Metaweb Query Language", "label": "Metaweb Query Language", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 7, "id": "Google", "label": "Google", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 6}, {"group": 7, "id": "Veda Hlubinka-Cook", "label": "Veda Hlubinka-Cook", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 7, "id": "Kurt Bollacker", "label": "Kurt Bollacker", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 7, "id": "John Giannandrea", "label": "John Giannandrea", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 9, "id": "Bing", "label": "Bing", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "Schema.org", "label": "Schema.org", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 9}, {"group": 9, "id": "Yahoo!", "label": "Yahoo!", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "GoodRelations", "label": "GoodRelations", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "microformats", "label": "microformats", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 7, "id": "JSON-LD", "label": "JSON-LD", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 2}, {"group": 12, "id": "Edgar W. Schneider", "label": "Edgar W. Schneider", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 12", "value": 2}, {"group": 12, "id": "Knowledge Graph", "label": "Knowledge Graph", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 12", "value": 2}, {"group": 9, "id": "Marc Wirk", "label": "Marc Wirk", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "GeoNames", "label": "GeoNames", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 3}, {"group": 14, "id": "Andrew Edmonds", "label": "Andrew Edmonds", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 14", "value": 2}, {"group": 14, "id": "ThinkBase", "label": "ThinkBase", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 14", "value": 2}, {"group": 7, "id": "Google Knowledge Graph", "label": "Google Knowledge Graph", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 7", "value": 4}, {"group": 9, "id": "Max Planck Institute for Informatics", "label": "Max Planck Institute for Informatics", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "WordNet", "label": "WordNet", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 9, "id": "SUMO", "label": "SUMO", "shape": "dot", "title": "KnowledgeBase, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 9", "value": 2}, {"group": 16, "id": "Douglas Lenat", "label": "Douglas Lenat", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 16", "value": 4}, {"group": 16, "id": "Cyc", "label": "Cyc", "shape": "dot", "title": "Technology, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 16", "value": 3}, {"group": 16, "id": "Cycorp", "label": "Cycorp", "shape": "dot", "title": "Organization, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 16", "value": 3}, {"group": 16, "id": "Russell Greiner", "label": "Russell Greiner", "shape": "dot", "title": "Person, \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0430 16", "value": 2}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "Semantic Web", "title": "STANDARDIZED_BY", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "Semantic Web", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Semantic Web", "title": "BUILT_ON", "to": "Web Ontology Language"}, {"arrows": "to", "from": "World Wide Web Consortium", "title": "CREATED", "to": "WebPlatform"}, {"arrows": "to", "from": "Resource Description Framework", "title": "STANDARDIZED_BY", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "Resource Description Framework", "title": "DERIVED_FROM", "to": "Platform for Internet Content Selection"}, {"arrows": "to", "from": "Web Ontology Language", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Web Ontology Language", "title": "STANDARDIZED_BY", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "Web Ontology Language", "title": "INFLUENCED_BY", "to": "DAML+OIL"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "Semantic Web"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "COLLABORATED_WITH", "to": "James Hendler"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "COLLABORATED_WITH", "to": "Lassila"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH, CREATED", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "Linked data"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "World Wide Web"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "HTML"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "HTTP"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "University of Oxford"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "Massachusetts Institute of Technology"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "COLLABORATED_WITH", "to": "Rosemary Leith"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH, CREATED", "to": "World Wide Web Foundation"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "MIT Computer Science and Artificial Intelligence Laboratory"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "Web Science Research Initiative"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "ENQUIRE"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "University of Southampton"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "COLLABORATED_WITH", "to": "Nigel Shadbolt"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "Open Data Institute"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "CREATED", "to": "Inrupt"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "Plessey"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "AFFILIATED_WITH", "to": "CERN"}, {"arrows": "to", "from": "Tim Berners-Lee", "title": "COLLABORATED_WITH", "to": "Stephen Witt"}, {"arrows": "to", "from": "James Hendler", "title": "AFFILIATED_WITH", "to": "DARPA"}, {"arrows": "to", "from": "James Hendler", "title": "AFFILIATED_WITH", "to": "Web-Ontology Working Group"}, {"arrows": "to", "from": "James Hendler", "title": "COLLABORATED_WITH", "to": "Guus Schreiber"}, {"arrows": "to", "from": "Corese", "title": "BUILT_ON", "to": "RDF Schema"}, {"arrows": "to", "from": "RDF Schema", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Tim O\u0027Reilly", "title": "CREATED", "to": "Web 2.0"}, {"arrows": "to", "from": "Linked data", "title": "BUILT_ON", "to": "HTTP"}, {"arrows": "to", "from": "Linked data", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "SIMILE project", "title": "SUPPORTS", "to": "Linking Open Data"}, {"arrows": "to", "from": "UMBEL", "title": "DERIVED_FROM", "to": "OpenCyc"}, {"arrows": "to", "from": "UMBEL", "title": "LINKED_TO", "to": "DBpedia"}, {"arrows": "to", "from": "UMBEL", "title": "LINKED_TO", "to": "YAGO"}, {"arrows": "to", "from": "DBpedia", "title": "DERIVED_FROM", "to": "Wikipedia"}, {"arrows": "to", "from": "DBpedia", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "DBpedia", "title": "BUILT_ON", "to": "SPARQL"}, {"arrows": "to", "from": "YAGO", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "YAGO", "title": "DERIVED_FROM", "to": "Wikidata"}, {"arrows": "to", "from": "YAGO", "title": "DERIVED_FROM", "to": "Schema.org"}, {"arrows": "to", "from": "YAGO", "title": "DERIVED_FROM", "to": "Wikipedia"}, {"arrows": "to", "from": "YAGO", "title": "DERIVED_FROM", "to": "WordNet"}, {"arrows": "to", "from": "YAGO", "title": "DERIVED_FROM", "to": "GeoNames"}, {"arrows": "to", "from": "YAGO", "title": "LINKED_TO", "to": "DBpedia"}, {"arrows": "to", "from": "YAGO", "title": "LINKED_TO", "to": "SUMO"}, {"arrows": "to", "from": "Turtle", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "SPARQL", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "SPARQL", "title": "STANDARDIZED_BY", "to": "RDF Data Access Working Group"}, {"arrows": "to", "from": "SPARQL", "title": "STANDARDIZED_BY", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "SHACL", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Ramanathan V. Guha", "title": "CREATED", "to": "Meta Content Framework"}, {"arrows": "to", "from": "Ramanathan V. Guha", "title": "AFFILIATED_WITH", "to": "Apple"}, {"arrows": "to", "from": "Tim Bray", "title": "CREATED", "to": "Meta Content Framework"}, {"arrows": "to", "from": "Tim Bray", "title": "AFFILIATED_WITH", "to": "Netscape"}, {"arrows": "to", "from": "RDQL", "title": "SUPERSEDED_BY", "to": "SPARQL"}, {"arrows": "to", "from": "SPIN", "title": "SUPERSEDED_BY", "to": "SHACL"}, {"arrows": "to", "from": "FOAF", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Microsoft", "title": "SUPPORTS", "to": "Connected Services Framework"}, {"arrows": "to", "from": "NEPOMUK", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "Smart-M3", "title": "BUILT_ON", "to": "Resource Description Framework"}, {"arrows": "to", "from": "LV2", "title": "BUILT_ON", "to": "Turtle"}, {"arrows": "to", "from": "Guus Schreiber", "title": "AFFILIATED_WITH", "to": "Web-Ontology Working Group"}, {"arrows": "to", "from": "GeoSPARQL", "title": "STANDARDIZED_BY", "to": "Open Geospatial Consortium"}, {"arrows": "to", "from": "SPARUL", "title": "BUILT_ON", "to": "SPARQL"}, {"arrows": "to", "from": "XSPARQL", "title": "BUILT_ON", "to": "XQuery"}, {"arrows": "to", "from": "XSPARQL", "title": "BUILT_ON", "to": "SPARQL"}, {"arrows": "to", "from": "Seth Dobbs", "title": "AFFILIATED_WITH", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "Jeffrey M. Jaffe", "title": "AFFILIATED_WITH", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "H\u00e5kon Wium Lie", "title": "AFFILIATED_WITH", "to": "World Wide Web Consortium"}, {"arrows": "to", "from": "IBM Watson", "title": "BUILT_ON", "to": "DBpedia"}, {"arrows": "to", "from": "Free University of Berlin", "title": "CREATED", "to": "DBpedia Spotlight"}, {"arrows": "to", "from": "S\u00f6ren Auer", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Christian Bizer", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Georgi Kobilarov", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Jens Lehmann", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Richard Cyganiak", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Zachary Ives", "title": "CREATED", "to": "DBpedia"}, {"arrows": "to", "from": "Wikidata", "title": "BUILT_ON", "to": "MediaWiki"}, {"arrows": "to", "from": "Wikidata", "title": "DERIVED_FROM", "to": "Freebase"}, {"arrows": "to", "from": "Freebase", "title": "SUPERSEDED_BY", "to": "Wikidata"}, {"arrows": "to", "from": "Wikimedia Deutschland", "title": "SUPPORTS", "to": "Wikidata"}, {"arrows": "to", "from": "Wikidata Query Service", "title": "BUILT_ON", "to": "Blazegraph"}, {"arrows": "to", "from": "Metaweb", "title": "CREATED", "to": "Freebase"}, {"arrows": "to", "from": "Metaweb", "title": "CREATED", "to": "Graphd"}, {"arrows": "to", "from": "Metaweb", "title": "CREATED", "to": "Metaweb Query Language"}, {"arrows": "to", "from": "Google", "title": "ACQUIRED", "to": "Metaweb"}, {"arrows": "to", "from": "Google", "title": "SUPPORTS", "to": "Freebase"}, {"arrows": "to", "from": "Google", "title": "CREATED", "to": "Schema.org"}, {"arrows": "to", "from": "Google", "title": "SUPPORTS", "to": "JSON-LD"}, {"arrows": "to", "from": "Google", "title": "CREATED", "to": "Google Knowledge Graph"}, {"arrows": "to", "from": "Veda Hlubinka-Cook", "title": "AFFILIATED_WITH", "to": "Metaweb"}, {"arrows": "to", "from": "Kurt Bollacker", "title": "AFFILIATED_WITH", "to": "Metaweb"}, {"arrows": "to", "from": "John Giannandrea", "title": "AFFILIATED_WITH", "to": "Metaweb"}, {"arrows": "to", "from": "Bing", "title": "CREATED", "to": "Schema.org"}, {"arrows": "to", "from": "Schema.org", "title": "BUILT_ON", "to": "GoodRelations"}, {"arrows": "to", "from": "Schema.org", "title": "INFLUENCED_BY", "to": "microformats"}, {"arrows": "to", "from": "Schema.org", "title": "INFLUENCED_BY", "to": "FOAF"}, {"arrows": "to", "from": "Schema.org", "title": "INFLUENCED_BY", "to": "OpenCyc"}, {"arrows": "to", "from": "Yahoo!", "title": "CREATED", "to": "Schema.org"}, {"arrows": "to", "from": "Edgar W. Schneider", "title": "CREATED", "to": "Knowledge Graph"}, {"arrows": "to", "from": "Marc Wirk", "title": "CREATED", "to": "GeoNames"}, {"arrows": "to", "from": "Andrew Edmonds", "title": "CREATED", "to": "ThinkBase"}, {"arrows": "to", "from": "Google Knowledge Graph", "title": "BUILT_ON", "to": "DBpedia"}, {"arrows": "to", "from": "Google Knowledge Graph", "title": "BUILT_ON", "to": "Freebase"}, {"arrows": "to", "from": "Max Planck Institute for Informatics", "title": "CREATED", "to": "YAGO"}, {"arrows": "to", "from": "Douglas Lenat", "title": "CREATED", "to": "Cyc"}, {"arrows": "to", "from": "Douglas Lenat", "title": "COLLABORATED_WITH", "to": "Russell Greiner"}, {"arrows": "to", "from": "Douglas Lenat", "title": "AFFILIATED_WITH", "to": "Cycorp"}, {"arrows": "to", "from": "Cycorp", "title": "SUPPORTS", "to": "Cyc"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,1332 @@
+[
+ {
+  "id": "semantic_web#0",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Introduction\nThe Semantic Web, sometimes known as Web 3.0, is an extension of the World Wide Web through standards set by the World Wide Web Consortium (W3C). The goal of the Semantic Web is to make Internet data machine-readable.\nTo enable the encoding of semantics with the data, technologies such as Resource Description Framework (RDF) and Web Ontology Language (OWL) are used. These technologies are used to formally represent metadata. For example, ontology can describe concepts, relationships between entities, and categories of things. These embedded semantics offer significant advantages such as reasoning over data and operating with heterogeneous data sources."
+ },
+ {
+  "id": "semantic_web#1",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Introduction\nThese standards promote common data formats and exchange protocols on the Web, fundamentally the RDF. According to the W3C, \"The Semantic Web provides a common framework that allows data to be shared and reused across application, enterprise, and community boundaries.\" The Semantic Web is therefore regarded as an integrator across different content and information applications and systems."
+ },
+ {
+  "id": "semantic_web#2",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — History\nThe term was coined by Tim Berners-Lee for a web of data (or data web) that can be processed by machines—that is, one in which much of the meaning is machine-readable. While its critics have questioned its feasibility, proponents argue that applications in library and information science, industry, biology and human sciences research have already proven the validity of the original concept.\nThe idea of adding semantics to the Web predates the term itself. Berners-Lee discussed the need for semantics in the Web at the first International World Wide Web Conference in 1994. In 1998, he published a design document titled \"Semantic Web Road map\", outlining the architecture for a web of machine-processable data. The first patent for the creation of a semantic web was filed by Amit Sheth et al. on 30 October 2001.\nBerners-Lee originally expressed his vision of the Semantic Web in 1999 as follows:"
+ },
+ {
+  "id": "semantic_web#3",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — History\nI have a dream for the Web [in which computers] become capable of analyzing all the data on the Web – the content, links, and transactions between people and computers. A \"Semantic Web\", which makes this possible, has yet to emerge, but when it does, the day-to-day mechanisms of trade, bureaucracy and our daily lives will be handled by machines talking to machines. The \"intelligent agents\" people have touted for ages will finally materialize.\nThe 2001 Scientific American article by Berners-Lee, Hendler, and Lassila described an expected evolution of the existing Web to a Semantic Web. In 2006, Berners-Lee and colleagues stated that: \"This simple idea…remains largely unrealized\".\nIn 2013, more than four million Web domains (out of roughly 250 million total) contained Semantic Web markup."
+ },
+ {
+  "id": "semantic_web#4",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Example\nIn the following example, the text \"Paul Schuster was born in Dresden\" on a website will be annotated, connecting a person with their place of birth. The following HTML fragment shows how a small graph is being described, in RDFa-syntax using a schema.org vocabulary and a Wikidata ID:\n\nThe example defines the following five triples (shown in Turtle syntax). Each triple represents one edge in the resulting graph: the first element of the triple (the subject) is the name of the node where the edge starts, the second element (the predicate) the type of the edge, and the last and third element (the object) either the name of the node where the edge ends or a literal value (e.g. a text, a number, etc.).\n\nThe triples result in the graph shown in the given figure."
+ },
+ {
+  "id": "semantic_web#5",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Example\nOne of the advantages of using Uniform Resource Identifiers (URIs) is that they can be dereferenced using the HTTP protocol. According to the so-called Linked Open Data principles, such a dereferenced URI should result in a document that offers further data about the given URI. In this example, all URIs, both for edges and nodes (e.g. http://schema.org/Person, http://schema.org/birthPlace, http://www.wikidata.org/entity/Q1731) can be dereferenced and will result in further RDF graphs, describing the URI, e.g. that Dresden is a city in Germany, or that a person, in the sense of that URI, can be fictional.\nThe second graph shows the previous example, but now enriched with a few of the triples from the documents that result from dereferencing https://schema.org/Person (green edge) and https://www.wikidata.org/entity/Q1731 (blue edges).\nAdditionally to the edges given in the involved documents explicitly, edges can be automatically inferred: the triple"
+ },
+ {
+  "id": "semantic_web#6",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Example\nfrom the original RDFa fragment and the triple\n\nfrom the document at https://schema.org/Person (green edge in the figure) allow to infer the following triple, given OWL semantics (red dashed line in the second Figure):"
+ },
+ {
+  "id": "semantic_web#7",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Background\nThe concept of the semantic network was used in the 1950s and 1960s by researchers such as the Richard H. Richens, cognitive scientist Allan M. Collins,  computational linguist M. Ross Quillian and psychologist Elizabeth F. Loftus to represent semantically structured knowledge, both conceptually and in computer systems. \nThe term \"Semantic Web\" was coined by Tim Berners-Lee, the inventor of the World Wide Web and director of the World Wide Web Consortium (\"W3C\"), which oversees the development of proposed Semantic Web standards. He defines the Semantic Web as \"a web of data that can be processed directly and indirectly by machines\". The Semantic Web extends the network of hyperlinked human-readable web pages by inserting machine-readable metadata about pages and how they are related to each other.  This enables automated agents to access the Web more intelligently and perform more tasks on behalf of users."
+ },
+ {
+  "id": "semantic_web#8",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Background\nMany of the technologies proposed by the W3C already existed before they were positioned under the W3C umbrella. These are used in various contexts, particularly those dealing with information that encompasses a limited and defined domain, and where sharing data is a common necessity, such as scientific research or data exchange among businesses. In addition, other technologies with similar goals have emerged, such as microformats."
+ },
+ {
+  "id": "semantic_web#9",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Limitations of HTML\nMany files on a typical computer can be loosely divided into either human-readable documents, or machine-readable data. Examples of human-readable document files are mail messages, reports, and brochures. Examples of machine-readable data files are calendars, address books, playlists, and spreadsheets, which are presented to a user using an application program that lets the files be viewed, searched, and combined.\nCurrently, the World Wide Web is based mainly on documents written in Hypertext Markup Language (HTML), a markup convention that is used for coding a body of text interspersed with multimedia objects such as images and interactive forms. Metadata tags provide a method by which computers can categorize the content of web pages. In the examples below, the field names \"keywords\", \"description\" and \"author\" are assigned values such as \"computing\", and \"cheap widgets for sale\" and \"John Doe\"."
+ },
+ {
+  "id": "semantic_web#10",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Limitations of HTML\nBecause of this metadata tagging and categorization, other computer systems that want to access and share this data can easily identify the relevant values."
+ },
+ {
+  "id": "semantic_web#11",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Limitations of HTML\nWith HTML and a tool to render it (perhaps web browser software, perhaps another user agent), one can create and present a page that lists items for sale. The HTML of this catalog page can make simple, document-level assertions such as \"this document's title is 'Widget Superstore'\", but there is no capability within the HTML itself to assert unambiguously that, for example, item number X586172 is an Acme Gizmo with a retail price of €199, or that it is a consumer product. Rather, HTML can only say that the span of text \"X586172\" is something that should be positioned near \"Acme Gizmo\" and \"€199\", etc. There is no way to say \"this is a catalog\" or even to establish that \"Acme Gizmo\" is a kind of title or that \"€199\" is a price. There is also no way to express that these pieces of information are bound together in describing a discrete item, distinct from other items perhaps listed on the page."
+ },
+ {
+  "id": "semantic_web#12",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Limitations of HTML\nSemantic HTML refers to the traditional HTML practice of markup following intention, rather than specifying layout details directly. For example, the use of <em> denoting \"emphasis\" rather than <i>, which specifies italics. Layout details are left up to the browser, in combination with Cascading Style Sheets. But this practice falls short of specifying the semantics of objects such as items for sale or prices.\nMicroformats extend HTML syntax to create machine-readable semantic markup about objects including people, organizations, events and products. Similar initiatives include RDFa, Microdata and Schema.org."
+ },
+ {
+  "id": "semantic_web#13",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Semantic Web solutions\nThe Semantic Web takes the solution further. It involves publishing in languages specifically designed for data: Resource Description Framework (RDF), Web Ontology Language (OWL), and Extensible Markup Language (XML). HTML describes documents and the links between them. RDF, OWL, and XML, by contrast, can describe arbitrary things such as people, meetings, or airplane parts."
+ },
+ {
+  "id": "semantic_web#14",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Semantic Web solutions\nThese technologies are combined in order to provide descriptions that supplement or replace the content of Web documents. Thus, content may manifest itself as descriptive data stored in Web-accessible databases, or as markup within documents (particularly, in Extensible HTML (XHTML) interspersed with XML, or, more often, purely in XML, with layout or rendering cues stored separately). The machine-readable descriptions enable content managers to add meaning to the content, i.e., to describe the structure of the knowledge we have about that content. In this way, a machine can process knowledge itself, instead of text, using processes similar to human deductive reasoning and inference, thereby obtaining more meaningful results and helping computers to perform automated information gathering and research.\nAn example of a tag that would be used in a non-semantic web page:"
+ },
+ {
+  "id": "semantic_web#15",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Semantic Web solutions\nEncoding similar information in a semantic web page might look like this:\n\nTim Berners-Lee calls the resulting network of Linked Data the Giant Global Graph, in contrast to the HTML-based World Wide Web. Berners-Lee posits that if the past was document sharing, the future is data sharing. His answer to the question of \"how\" provides three points of instruction. One, a URL should point to the data. Two, anyone accessing the URL should get data back. Three, relationships in the data should point to additional URLs with data."
+ },
+ {
+  "id": "semantic_web#16",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Tags and identifiers\nTags, including hierarchical categories and tags that are collaboratively added and maintained (e.g. with folksonomies) can be considered part of, of potential use to or a step towards the semantic Web vision.\nUnique identifiers, including hierarchical categories and collaboratively added ones, analysis tools and metadata, including tags, can be used to create forms of semantic webs – webs that are to a certain degree semantic.  In particular, such has been used for structuring scientific research i.a. by research topics and scientific fields by the projects OpenAlex, Wikidata and Scholia which are under development and provide APIs, Web-pages, feeds and graphs for various semantic queries."
+ },
+ {
+  "id": "semantic_web#17",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Web 3.0\nTim Berners-Lee has described the Semantic Web as a component of Web 3.0.\n\nPeople keep asking what Web 3.0 is. I think maybe when you've got an overlay of scalable vector graphics – everything rippling and folding and looking misty – on Web 2.0 and access to a semantic Web integrated across a huge space of data, you'll have access to an unbelievable data resource …\n\"Semantic Web\" is sometimes used as a synonym for \"Web 3.0\", though the definition of each term varies."
+ },
+ {
+  "id": "semantic_web#18",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Beyond Web 3.0\nThe next generation of the Web is often termed Web 4.0, but its definition is not clear. According to some sources, it is a Web that involves artificial intelligence, the internet of things, pervasive computing, ubiquitous computing and the Web of Things among other concepts. According to the European Union, Web 4.0 is \"the expected fourth generation of the World Wide Web. Using advanced artificial and ambient intelligence, the internet of things, trusted blockchain transactions, virtual worlds and XR capabilities, digital and real objects and environments are fully integrated and communicate with each other, enabling truly intuitive, immersive experiences, seamlessly blending the physical and digital worlds\"."
+ },
+ {
+  "id": "semantic_web#19",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Challenges\nSome of the challenges for the Semantic Web include vastness, vagueness, uncertainty, inconsistency, and deceit. Automated reasoning systems will have to deal with all of these issues in order to deliver on the promise of the Semantic Web."
+ },
+ {
+  "id": "semantic_web#20",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Challenges\nVastness: The World Wide Web contains many billions of pages. The SNOMED CT medical terminology ontology alone contains 370,000 class names, and existing technology has not yet been able to eliminate all semantically duplicated terms. Any automated reasoning system will have to deal with truly huge inputs.\nVagueness: These are imprecise concepts like \"young\" or \"tall\". This arises from the vagueness of user queries, of concepts represented by content providers, of matching query terms to provider terms and of trying to combine different knowledge bases with overlapping but subtly different concepts. Fuzzy logic is the most common technique for dealing with vagueness.\nUncertainty: These are precise concepts with uncertain values. For example, a patient might present a set of symptoms that correspond to a number of different distinct diagnoses each with a different probability. Probabilistic reasoning techniques are generally employed to address uncertainty."
+ },
+ {
+  "id": "semantic_web#21",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Challenges\nInconsistency: These are logical contradictions that will inevitably arise during the development of large ontologies, and when ontologies from separate sources are combined. Deductive reasoning fails catastrophically when faced with inconsistency, because \"anything follows from a contradiction\". Defeasible reasoning and paraconsistent reasoning are two techniques that can be employed to deal with inconsistency.\nDeceit: This is when the producer of the information is intentionally misleading the consumer of the information. Cryptography techniques are currently utilized to alleviate this threat. By providing a means to determine the information's integrity, including that which relates to the identity of the entity that produced or published the information, however credibility issues still have to be addressed in cases of potential deceit."
+ },
+ {
+  "id": "semantic_web#22",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Challenges\nThis list of challenges is illustrative rather than exhaustive, and it focuses on the challenges to the \"unifying logic\" and \"proof\" layers of the Semantic Web. The World Wide Web Consortium (W3C) Incubator Group for Uncertainty Reasoning for the World Wide Web (URW3-XG) final report lumps these problems together under the single heading of \"uncertainty\". Many of the techniques mentioned here will require extensions to the Web Ontology Language (OWL) for example to annotate conditional probabilities. This is an area of active research."
+ },
+ {
+  "id": "semantic_web#23",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Standards\nStandardization for Semantic Web in the context of Web 3.0 is under the care of W3C."
+ },
+ {
+  "id": "semantic_web#24",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Components\nThe term \"Semantic Web\" is often used more specifically to refer to the formats and technologies that enable it. The collection, structuring and recovery of linked data are enabled by technologies that provide a formal description of concepts, terms, and relationships within a given knowledge domain. These technologies are specified as W3C standards and include:"
+ },
+ {
+  "id": "semantic_web#25",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Components\nResource Description Framework (RDF), a general method for describing information\nRDF Schema (RDFS)\nSimple Knowledge Organization System (SKOS)\nSPARQL, an RDF query language\nNotation3 (N3), designed with human readability in mind\nN-Triples, a format for storing and transmitting data\nTurtle (Terse RDF Triple Language)\nWeb Ontology Language (OWL), a family of knowledge representation languages\nRule Interchange Format (RIF), a framework of web rule language dialects supporting rule interchange on the Web\nJavaScript Object Notation for Linked Data (JSON-LD), a JSON-based method to describe data\nActivityPub, a generic way for client and server to communicate with each other. This is used by the popular decentralized social network Mastodon.\nThe Semantic Web Stack illustrates the architecture of the Semantic Web. The functions and relationships of the components can be summarized as follows:"
+ },
+ {
+  "id": "semantic_web#26",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Components\nXML provides an elemental syntax for content structure within documents, yet associates no semantics with the meaning of the content contained within. XML is not at present a necessary component of Semantic Web technologies in most cases, as alternative syntaxes exist, such as Turtle. Turtle is a de facto standard, but has not been through a formal standardization process.\nXML Schema is a language for providing and restricting the structure and content of elements contained within XML documents.\nRDF is a simple language for expressing data models, which refer to objects (\"web resources\") and their relationships. An RDF-based model can be represented in a variety of syntaxes, e.g., RDF/XML, N3, Turtle, and RDFa. RDF is a fundamental standard of the Semantic Web.\nRDF Schema extends RDF and is a vocabulary for describing properties and classes of RDF-based resources, with semantics for generalized-hierarchies of such properties and classes."
+ },
+ {
+  "id": "semantic_web#27",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Components\nOWL adds more vocabulary for describing properties and classes: among others, relations between classes (e.g. disjointness), cardinality (e.g. \"exactly one\"), equality, richer typing of properties, characteristics of properties (e.g. symmetry), and enumerated classes.\nSPARQL is a protocol and query language for semantic web data sources.\nRIF is the W3C Rule Interchange Format. It is an XML language for expressing Web rules that computers can execute. RIF provides multiple versions, called dialects. It includes a RIF Basic Logic Dialect (RIF-BLD) and RIF Production Rules Dialect (RIF PRD)."
+ },
+ {
+  "id": "semantic_web#28",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Current state of standardization\nWell-established standards:\n\nRDF - Resource Description Framework\nRDFS - Resource Description Framework Schema\n RIF - Rule Interchange Format\n SPARQL - 'SPARQL Protocol and RDF Query Language'\nUnicode\n URI - Uniform Resource Identifier\n OWL - Web Ontology Language\n XML - Extensible Markup Language\nNot yet fully realized:\n\nUnifying Logic and Proof layers\n SWRL - Semantic Web Rule Language"
+ },
+ {
+  "id": "semantic_web#29",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nThe intent is to enhance the usability and usefulness of the Web and its interconnected resources by creating semantic web services, such as:"
+ },
+ {
+  "id": "semantic_web#30",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nServers that expose existing data systems using the RDF and SPARQL standards. Many converters to RDF exist from different applications. Relational databases are an important source. The semantic web server attaches to the existing system without affecting its operation."
+ },
+ {
+  "id": "semantic_web#31",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nDocuments \"marked up\" with semantic information (an extension of the HTML <meta> tags used in today's Web pages to supply information for Web search engines using web crawlers). This could be machine-understandable information about the human-understandable content of the document (such as the creator, title, description, etc.) or it could be purely metadata representing a set of facts (such as resources and services elsewhere on the site). Note that anything that can be identified with a Uniform Resource Identifier (URI) can be described, so the semantic web can reason about animals, people, places, ideas, etc.  There are four semantic annotation formats that can be used in HTML documents; Microformat, RDFa, Microdata and JSON-LD. Semantic markup is often generated automatically, rather than manually."
+ },
+ {
+  "id": "semantic_web#32",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nCommon metadata vocabularies (ontologies) and maps between vocabularies that allow document creators to know how to mark up their documents so that agents can use the information in the supplied metadata (so that Author in the sense of 'the Author of the page' will not be confused with Author in the sense of a book that is the subject of a book review).\nAutomated agents to perform tasks for users of the semantic web using this data.\nSemantic translation. An alternative or complementary approach are improvements to contextual and semantic understanding of texts – these could be aided via Semantic Web methods so that only increasingly small numbers of mistranslations need to be corrected in manual or semi-automated post-editing.\nWeb-based services (often with agents of their own) to supply information specifically to agents, for example, a Trust service that an agent could ask if some online store has a history of poor service or spamming."
+ },
+ {
+  "id": "semantic_web#33",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nSemantic Web ideas are implemented in collaborative structured argument mapping sites where their relations are organized semantically, arguments can be mirrored (linked) to multiple places, reused (copied), rated, and changed as semantic distinct units. Ideas for such, or a more widely adopted \"World Wide Argument Web\", go back to at least 2007 and have been implemented to some degree in Argüman and Kialo. Further steps towards semantic web services may include enabling \"Querying\", argument search engines, and \"summarizing the contentious and agreed-upon points of a discussion\".\nSuch services could be useful to public search engines, or could be used for knowledge management within an organization.  Business applications include:"
+ },
+ {
+  "id": "semantic_web#34",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Applications\nFacilitating the integration of information from mixed sources\nDissolving ambiguities in corporate terminology\nImproving information retrieval thereby reducing information overload and increasing the refinement and precision of the data retrieved\nIdentifying relevant information with respect to a given domain\nProviding decision making support\nIn a corporation, there is a closed group of users and the management is able to enforce company guidelines like the adoption of specific ontologies and use of semantic annotation. Compared to the public Semantic Web there are lesser requirements on scalability and the information circulating within a company can be more trusted in general; privacy is less of an issue outside of handling of customer data."
+ },
+ {
+  "id": "semantic_web#35",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nCritics question the basic feasibility of a complete or even partial fulfillment of the Semantic Web, pointing out both difficulties in setting it up and a lack of general-purpose usefulness that prevents the required effort from being invested. In a 2003 paper, Marshall and Shipman point out the cognitive overhead inherent in formalizing knowledge, compared to the authoring of traditional web hypertext:"
+ },
+ {
+  "id": "semantic_web#36",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nWhile learning the basics of HTML is relatively straightforward, learning a knowledge representation language or tool requires the author to learn about the representation's methods of abstraction and their effect on reasoning. For example, understanding the class-instance relationship, or the superclass-subclass relationship, is more than understanding that one concept is a \"type of\" another concept. [...] These abstractions are taught to computer scientists generally and knowledge engineers specifically but do not match the similar natural language meaning of being a \"type of\" something. Effective use of such a formal representation requires the author to become a skilled knowledge engineer in addition to any other skills required by the domain. [...] Once one has learned a formal representation language, it is still often much more effort to express ideas in that representation than in a less formal representation [...]."
+ },
+ {
+  "id": "semantic_web#37",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nIndeed, this is a form of programming based on the declaration of semantic data and requires an understanding of how reasoning algorithms will interpret the authored structures."
+ },
+ {
+  "id": "semantic_web#38",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nAccording to Marshall and Shipman, the tacit and changing nature of much knowledge adds to the knowledge engineering problem, and limits the Semantic Web's applicability to specific domains. A further issue that they point out are domain- or organization-specific ways to express knowledge, which must be solved through community agreement rather than only technical means. As it turns out, specialized communities and organizations for intra-company projects have tended to adopt semantic web technologies greater than peripheral and less-specialized communities. The practical constraints toward adoption have appeared less challenging where domain and scope is more limited than that of the general public and the World-Wide Web.\nFinally, Marshall and Shipman see pragmatic problems in the idea of (Knowledge Navigator-style) intelligent agents working in the largely manually curated Semantic Web:"
+ },
+ {
+  "id": "semantic_web#39",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nIn situations in which user needs are known and distributed information resources are well described, this approach can be highly effective; in situations that are not foreseen and that bring together an unanticipated array of information resources, the Google approach is more robust. Furthermore, the Semantic Web relies on inference chains that are more brittle; a missing element of the chain results in a failure to perform the desired action, while the human can supply missing pieces in a more Google-like approach. [...] cost-benefit tradeoffs can work in favor of specially-created Semantic Web metadata directed at weaving together sensible well-structured domain-specific information resources; close attention to user/customer needs will drive these federations if they are to be successful."
+ },
+ {
+  "id": "semantic_web#40",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Practical feasibility\nCory Doctorow's critique (\"metacrap\") is from the perspective of human behavior and personal preferences. For example, people may include spurious metadata into Web pages in an attempt to mislead Semantic Web engines that naively assume the metadata's veracity. This phenomenon was well known with metatags that fooled the Altavista ranking algorithm into elevating the ranking of certain Web pages: the Google indexing engine specifically looks for such attempts at manipulation. Peter Gärdenfors and Timo Honkela point out that logic-based semantic web technologies cover only a fraction of the relevant phenomena related to semantics."
+ },
+ {
+  "id": "semantic_web#41",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Censorship and privacy\nEnthusiasm about the semantic web could be tempered by concerns regarding censorship and privacy. For instance, text-analyzing techniques can now be easily bypassed by using other words, metaphors for instance, or by using images in place of words. An advanced implementation of the semantic web would make it much easier for governments to control the viewing and creation of online information, as this information would be much easier for an automated content-blocking machine to understand. In addition, the issue has also been raised that, with the use of FOAF files and geolocation meta-data, there would be very little anonymity associated with the authorship of articles on things such as a personal blog. Some of these concerns were addressed in the \"Policy Aware Web\" project and is an active research and development topic."
+ },
+ {
+  "id": "semantic_web#42",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Doubling output formats\nAnother criticism of the semantic web is that it would be much more time-consuming to create and publish content because there would need to be two formats for one piece of data: one for human viewing and one for machines. However, many web applications in development are addressing this issue by creating a machine-readable format upon the publishing of data or the request of a machine for such data. The development of microformats has been one reaction to this kind of criticism. Another argument in defense of the feasibility of semantic web is the likely falling price of human intelligence tasks in digital labor markets, such as Amazon's Mechanical Turk.\nSpecifications such as eRDF and RDFa allow arbitrary RDF data to be embedded in HTML pages. The GRDDL (Gleaning Resource Descriptions from Dialects of Language) mechanism allows existing material (including microformats) to be automatically interpreted as RDF, so publishers only need to use a single format, such as HTML."
+ },
+ {
+  "id": "semantic_web#43",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Research activities on corporate applications\nThe first research group explicitly focusing on the Corporate Semantic Web was the ACACIA team at INRIA-Sophia-Antipolis, founded in 2002. Results of their work include the RDF(S) based Corese search engine, and the application of semantic web technology in the realm of distributed artificial intelligence for knowledge management (e.g. ontologies and multi-agent systems for corporate semantic Web) and E-learning.\nSince 2008, the Corporate Semantic Web research group, located at the Free University of Berlin, focuses on building blocks: Corporate Semantic Search, Corporate Semantic Collaboration, and Corporate Ontology Engineering.\nOntology engineering research includes the question of how to involve non-expert users in creating ontologies and semantically annotated content and for extracting explicit knowledge from the interaction of users within enterprises."
+ },
+ {
+  "id": "semantic_web#44",
+  "doc_id": "semantic_web",
+  "text": "Semantic Web — Future of applications\nTim O'Reilly, who coined the term Web 2.0, proposed a long-term vision of the Semantic Web as a web of data, where sophisticated applications are navigating and manipulating it. The data web transforms the World Wide Web from a distributed file system into a distributed database."
+ },
+ {
+  "id": "linked_data#45",
+  "doc_id": "linked_data",
+  "text": "Linked data — Introduction\nIn computing, linked data is structured data which is associated with (\"linked\" to) other data. Interlinking makes the data more useful through semantic queries. \nTim Berners-Lee, director of the World Wide Web Consortium (W3C), coined the term in a 2006 design note about the Semantic Web project.\nPart of the vision of linked data is for the Internet to become a global database.\nLinked data builds upon standard Web technologies such as HTTP, RDF and URIs, but rather than using them to serve web pages and hyperlinks only for human readers, it extends them to share information in a way that can be read automatically by computers (machine readable).\nLinked data may also be open data, in which case it is usually described as Linked Open Data."
+ },
+ {
+  "id": "linked_data#46",
+  "doc_id": "linked_data",
+  "text": "Linked data — Principles\nIn his 2006 \"Linked Data\" note, Tim Berners-Lee outlined four principles of linked data, paraphrased along the following lines:\n\nUniform Resource Identifiers (URIs) should be used to name and identify individual things.\nHTTP URIs should be used to allow these things to be looked up, interpreted, and subsequently \"dereferenced\".\nUseful information about what a name identifies should be provided through open standards such as RDF, SPARQL, etc.\nWhen publishing data on the Web, other things should be referred to using their HTTP URI-based names.\nTim Berners-Lee later restated these principles at a 2009 TED conference, again paraphrased along the following lines:\n\nAll conceptual things should have a name starting with HTTP.\nLooking up an HTTP name should return useful data about the thing in question in a standard format.\nAnything else that that same thing has a relationship with through its data should also be given a name beginning with HTTP."
+ },
+ {
+  "id": "linked_data#47",
+  "doc_id": "linked_data",
+  "text": "Linked data — Components\nThus, we can identify the following components as essential to a global Linked Data system as envisioned, and to any actual Linked Data subset within it:\n\nURIs\nHTTP\nStructured data using controlled vocabulary terms and dataset definitions expressed in Resource Description Framework serialization formats such as RDFa, RDF/XML, N3, Turtle, or JSON-LD\nLinked Data Platform\nCSV-W"
+ },
+ {
+  "id": "linked_data#48",
+  "doc_id": "linked_data",
+  "text": "Linked data — Linked open data\nLinked open data are linked data that are open data. Tim Berners-Lee gives the clearest definition of linked open data as differentiated from linked data.\n\n Linked Open Data (LOD) is Linked Data which is released under an open license, which does not impede its reuse for free.\nLarge linked open data sets include DBpedia, Wikibase, Wikidata and Open ICEcat."
+ },
+ {
+  "id": "linked_data#49",
+  "doc_id": "linked_data",
+  "text": "Linked data — 5-star linked open data\nIn 2010, Tim Berners-Lee suggested a 5-star scheme for grading the quality of open data on the web, for which the highest ranking is Linked Open Data:\n\n1 star: data is openly available in some format.\n2 stars: data is available in a structured format, such as Microsoft Excel file format (.xls).\n3 stars: data is available in a non-proprietary structured format, such as Comma-separated values (.csv).\n4 stars: data follows W3C standards, like using RDF and employing URIs.\n5 stars: all of the others, plus links to other Linked Open Data sources."
+ },
+ {
+  "id": "linked_data#50",
+  "doc_id": "linked_data",
+  "text": "Linked data — History\nThe term \"linked open data\" has been in use since at least February 2007, when the \"Linking Open Data\" mailing list was created. The mailing list was initially hosted by the SIMILE project at the Massachusetts Institute of Technology."
+ },
+ {
+  "id": "linked_data#51",
+  "doc_id": "linked_data",
+  "text": "Linked data — Linking Open Data community project\nThe goal of the W3C Semantic Web Education and Outreach group's Linking Open Data community project is to extend the Web with a data commons by publishing various open datasets as RDF on the Web and by setting RDF links between data items from different data sources. In October 2007, datasets consisted of over two billion RDF triples, which were interlinked by over two million RDF links.  By September 2011 this had grown to 31 billion RDF triples, interlinked by around 504 million RDF links.  A detailed statistical breakdown was published in 2014."
+ },
+ {
+  "id": "linked_data#52",
+  "doc_id": "linked_data",
+  "text": "Linked data — European Union projects\nThere are a number of European Union projects involving linked data. These include the linked open data around the clock (LATC) project, the AKN4EU project for machine-readable legislative data, the PlanetData project, the DaPaaS (Data-and-Platform-as-a-Service) project, and the Linked Open Data 2 (LOD2) project. Data linking is one of the main goals of the EU Open Data Portal, which makes available thousands of datasets for anyone to reuse and link."
+ },
+ {
+  "id": "linked_data#53",
+  "doc_id": "linked_data",
+  "text": "Linked data — Ontologies\nOntologies are formal descriptions of data structures. Some of the better known ontologies are:\n\nFOAF – an ontology describing persons, their properties and relationships\nUMBEL – a lightweight reference structure of 20,000 subject concept classes and their relationships derived from OpenCyc, which can act as binding classes to external data; also has links to 1.5 million named entities from DBpedia and YAGO"
+ },
+ {
+  "id": "linked_data#54",
+  "doc_id": "linked_data",
+  "text": "Linked data — Datasets\nDBpedia – a dataset containing extracted data from Wikipedia; it contains about 3.4 million concepts described by 1 billion triples, including abstracts in 11 different languages\nGeoNames – provides RDF descriptions of more than 7,500,000 geographical features worldwide\nWikidata – a collaboratively-created linked dataset that acts as central storage for the structured data of its Wikimedia Foundation sibling projects\nGlobal Research Identifier Database (GRID) – an international database of 89,506 institutions engaged in academic research, with 14,401 relationships. GRID models two types of relationships: a parent-child relationship that defines a subordinate association, and a related relationship that describes other associations\nKnowWhereGraph – an integrated 12 billion triples strong knowledge graph of 30 data layers at the intersection between humans and their environment using Semantic Web and Linked Data technologies."
+ },
+ {
+  "id": "linked_data#55",
+  "doc_id": "linked_data",
+  "text": "Linked data — Datasets\nOpen ICEcat - a multilingual open catalogue containing product datasheets, related digital assets and usage statistics."
+ },
+ {
+  "id": "linked_data#56",
+  "doc_id": "linked_data",
+  "text": "Linked data — Dataset instance and class relationships\nClickable diagrams that show the individual datasets and their relationships within the DBpedia-spawned LOD cloud (as by the figures to the right) are available."
+ },
+ {
+  "id": "rdf#57",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Introduction\nThe Resource Description Framework (RDF) is a method to describe and exchange graph data. It was originally designed as a data model for metadata by the World Wide Web Consortium (W3C). It provides a variety of syntax notations and formats, of which the most widely used is Turtle (Terse RDF Triple Language).\nRDF is a directed graph composed of triple statements. An RDF graph statement is represented by: (1) a node for the subject, (2) an arc from subject to object, representing a predicate, and (3) a node for the object. Each of these parts can be identified by a Internationalized Resource Identifier (IRI). An object can also be a literal value. This simple, flexible data model has a lot of expressive power to represent complex situations, relationships, and other things of interest, while also being appropriately abstract."
+ },
+ {
+  "id": "rdf#58",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Introduction\nRDF was adopted as a W3C recommendation in 1999. The RDF 1.0 specification was published in 2004, and the RDF 1.1 specification in 2014. SPARQL is a standard query language for RDF graphs. RDF Schema (RDFS), Web Ontology Language (OWL) and SHACL (Shapes Constraint Language) are ontology languages that are used to describe RDF data."
+ },
+ {
+  "id": "rdf#59",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Overview\nThe RDF data model is similar to classical conceptual modeling approaches (such as entity–relationship or class diagrams). It is based on the idea of making statements about resources (in particular web resources) in expressions of the form subject–predicate–object, known as triples. The subject denotes the resource; the predicate denotes traits or aspects of the resource, and expresses a relationship between the subject and the object.\nFor example, one way to represent the notion \"The sky has the color blue\" in RDF is as the triple: a subject denoting \"the sky\", a predicate denoting \"has the color\", and an object denoting \"blue\". Therefore, RDF uses subject instead of object (or entity) in contrast to the typical approach of an entity–attribute–value model in object-oriented design: entity (sky), attribute (color), and value (blue)."
+ },
+ {
+  "id": "rdf#60",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Overview\nRDF is an abstract model with several serialization formats (being essentially specialized file formats). In addition the particular encoding for resources or triples can vary from format to format.\nThis mechanism for describing resources is a major component in the W3C's Semantic Web activity: an evolutionary stage of the World Wide Web in which automated software can store, exchange, and use machine-readable information distributed throughout the Web, in turn enabling users to deal with the information with greater efficiency and certainty. RDF's simple data model and ability to model disparate, abstract concepts has also led to its increasing use in knowledge management applications unrelated to Semantic Web activity.\nA collection of RDF statements intrinsically represents a labeled, directed multigraph. This makes an RDF data model better suited to certain kinds of knowledge representation than other relational or ontological models."
+ },
+ {
+  "id": "rdf#61",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Overview\nAs RDFS, OWL and SHACL demonstrate, one can build additional ontology languages upon RDF."
+ },
+ {
+  "id": "rdf#62",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — History\nThe initial RDF design, intended to \"build a vendor-neutral and operating system- independent system of metadata\",  derived from the W3C's Platform for Internet Content Selection (PICS), an early web content labelling system, but the project was also shaped by ideas from Dublin Core, and from the Meta Content Framework (MCF), which had been developed during 1995 to 1997 by Ramanathan V. Guha at Apple and Tim Bray at Netscape.\nA first public draft of RDF appeared in October 1997, issued by a W3C working group that included representatives from IBM, Microsoft, Netscape, Nokia, Reuters, SoftQuad, and the University of Michigan.\nIn 1999, the W3C published the first recommended RDF specification, the Model and Syntax Specification (\"RDF M&S\"). This described RDF's data model and an XML serialization."
+ },
+ {
+  "id": "rdf#63",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — History\nTwo persistent misunderstandings about RDF developed at this time: firstly, due to the MCF influence and the RDF \"Resource Description\" initialism, the idea that RDF was specifically for use in representing metadata; secondly that RDF was an XML format rather than a data model, and only the RDF/XML serialisation being XML-based. RDF saw little take-up in this period, but there was significant work done in Bristol, around ILRT at Bristol University and HP Labs, and in Boston at MIT. RSS 1.0 and FOAF became exemplar applications for RDF in this period.\nThe recommendation of 1999 was replaced in 2004 by a set of six specifications: \"The RDF Primer\", \"RDF Concepts and Abstract\", \"RDF/XML Syntax Specification (revised)\", \"RDF Semantics\", \"RDF Vocabulary Description Language 1.0\", and \"The RDF Test Cases\"."
+ },
+ {
+  "id": "rdf#64",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — History\nThis series was superseded in 2014 by the following six \"RDF 1.1\" documents: \"RDF 1.1 Primer\", \"RDF 1.1 Concepts and Abstract Syntax\", \"RDF 1.1 XML Syntax\", \"RDF 1.1 Semantics\", \"RDF Schema 1.1\", and \"RDF 1.1 Test Cases\".\nIn April 2026, RDF 1.2 was released (along with SPARQL 1.2), adding support for quads, triple terms for reification, and the ability to specify language direction for strings."
+ },
+ {
+  "id": "rdf#65",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Vocabulary\nThe vocabulary defined by the RDF specification is as follows:"
+ },
+ {
+  "id": "rdf#66",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — rdf\nrdf:XMLLiteral\nthe class of XML literal values\nrdf:Property\nthe class of properties\nrdf:Statement\nthe class of RDF statements\nrdf:Alt, rdf:Bag, rdf:Seq\ncontainers of alternatives, unordered containers, and ordered containers (rdfs:Container is a super-class of the three)\nrdf:List\nthe class of RDF Lists\nrdf:nil\nan instance of rdf:List representing the empty list"
+ },
+ {
+  "id": "rdf#67",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — rdfs\nrdfs:Resource\nthe class resource, everything\nrdfs:Literal\nthe class of literal values, e.g. strings and integers\nrdfs:Class\nthe class of classes\nrdfs:Datatype\nthe class of RDF datatypes\nrdfs:Container\nthe class of RDF containers\nrdfs:ContainerMembershipProperty\nthe class of container membership properties, rdf:_1, rdf:_2, ..., all of which are sub-properties of rdfs:member"
+ },
+ {
+  "id": "rdf#68",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — rdf\nrdf:type\nan instance of rdf:Property used to state that a resource is an instance of a class\nrdf:first\nthe first item in the subject RDF list\nrdf:rest\nthe rest of the subject RDF list after rdf:first\nrdf:value\nidiomatic property used for structured values\nrdf:subject\nthe subject of the RDF statement\nrdf:predicate\nthe predicate of the RDF statement\nrdf:object\nthe object of the RDF statement\nrdf:Statement, rdf:subject, rdf:predicate, rdf:object are used for reification (see below)."
+ },
+ {
+  "id": "rdf#69",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — rdfs\nrdfs:subClassOf\nthe subject is a subclass of a class\nrdfs:subPropertyOf\nthe subject is a subproperty of a property\nrdfs:domain\na domain of the subject property\nrdfs:range\na range of the subject property\nrdfs:label\na human-readable name for the subject\nrdfs:comment\na description of the subject resource\nrdfs:member\na member of the subject resource\nrdfs:seeAlso\nfurther information about the subject resource\nrdfs:isDefinedBy\nthe definition of the subject resource\nThis vocabulary is used as a foundation for RDF Schema, where it is extended."
+ },
+ {
+  "id": "rdf#70",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Serialization formats\nTurtle, a compact, human-friendly format.\nTriG, an extension of Turtle to datasets.\nN-Triples, a very simple, easy-to-parse, line-based format that is not as compact as Turtle.\nN-Quads, a superset of N-Triples, for serializing multiple RDF graphs.\nJSON-LD, a JSON-based serialization.\nN3 or Notation3, a non-standard serialization that is very similar to Turtle, but has some additional features, such as the ability to define inference rules.\nRDF/XML, an XML-based syntax that was the first standard format for serializing RDF.\nRDF/JSON, an alternative syntax for expressing RDF triples using a simple JSON notation."
+ },
+ {
+  "id": "rdf#71",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Serialization formats\nRDF/JSON, an alternative syntax for expressing RDF triples using a simple JSON notation.\nRDF/XML is sometimes misleadingly called simply RDF because it was introduced among the other W3C specifications defining RDF and it was historically the first W3C standard RDF serialization format. However, it is important to distinguish the RDF/XML format from the abstract RDF model itself. Although the RDF/XML format is still in use, other RDF serializations are now preferred by many RDF users, both because they are more human-friendly,  and because some RDF graphs are not representable in RDF/XML due to restrictions on the syntax of XML QNames.\nWith a little effort, virtually any arbitrary XML may also be interpreted as RDF using GRDDL (pronounced 'griddle'), Gleaning Resource Descriptions from Dialects of Languages.\nRDF triples may be stored in a type of database called a triplestore."
+ },
+ {
+  "id": "rdf#72",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Resource identification\nThe subject of an RDF statement is either a uniform resource identifier (URI) or a blank node, both of which denote resources. Resources indicated by blank nodes are called anonymous resources. They are not directly identifiable from the RDF statement. The predicate is a URI which also indicates a resource, representing a relationship. The object is a URI, blank node or a Unicode string literal. \nAs of RDF 1.1 resources are identified by Internationalized Resource Identifiers (IRIs); IRIs are a generalization of URIs."
+ },
+ {
+  "id": "rdf#73",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Resource identification\nIn Semantic Web applications, and in relatively popular applications of RDF like RSS and FOAF (Friend of a Friend), resources tend to be represented by URIs that intentionally denote, and can be used to access, actual data on the World Wide Web. But RDF, in general, is not limited to the description of Internet-based resources. In fact, the URI that names a resource does not have to be dereferenceable at all. For example, a URI that begins with \"http:\" and is used as the subject of an RDF statement does not necessarily have to represent a resource that is accessible via HTTP, nor does it need to represent a tangible, network-accessible resource—such a URI could represent absolutely anything. However, there is broad agreement that a bare URI (without a # symbol) which returns a 300-level coded response when used in an HTTP GET request should be treated as denoting the internet resource that it succeeds in accessing."
+ },
+ {
+  "id": "rdf#74",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Resource identification\nTherefore, producers and consumers of RDF statements must agree on the semantics of resource identifiers. Such agreement is not inherent to RDF itself, although there are some controlled vocabularies in common use, such as Dublin Core Metadata, which is partially mapped to a URI space for use in RDF. The intent of publishing RDF-based ontologies on the Web is often to establish, or circumscribe, the intended meanings of the resource identifiers used to express data in RDF. For example, the URI:"
+ },
+ {
+  "id": "rdf#75",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Resource identification\nhttp://www.w3.org/TR/2004/REC-owl-guide-20040210/wine#Merlot\nis intended by its owners to refer to the class of all Merlot red wines by vintner (i.e., instances of the above URI each represent the class of all wine produced by a single vintner), a definition which is expressed by the OWL ontology—itself an RDF document—in which it occurs.  Without careful analysis of the definition, one might erroneously conclude that an instance of the above URI was something physical, instead of a type of wine.\nNote that this is not a 'bare' resource identifier, but is rather a URI reference, containing the '#' character and ending with a fragment identifier."
+ },
+ {
+  "id": "rdf#76",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Statement reification and context\nThe body of knowledge modeled by a collection of statements may be subjected to reification, in which each statement (that is each triple subject-predicate-object altogether) is assigned a URI and treated as a resource about which additional statements can be made, as in \"Jane says that John is the author of document X\". Reification is sometimes important in order to deduce a level of confidence or degree of usefulness for each statement.\nIn a reified RDF database, each original statement, being a resource, itself, most likely has at least three additional statements made about it: one to assert that its subject is some resource, one to assert that its predicate is some resource, and one to assert that its object is some resource or literal. More statements about the original statement may also exist, depending on the application's needs."
+ },
+ {
+  "id": "rdf#77",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Statement reification and context\nBorrowing from concepts available in logic (and as illustrated in graphical notations such as conceptual graphs and topic maps), some RDF model implementations acknowledge that it is sometimes useful to group statements according to different criteria, called situations, contexts, or scopes, as discussed in articles by RDF specification co-editor Graham Klyne. For example, a statement can be associated with a context, named by a URI, in order to assert an \"is true in\" relationship. As another example, it is sometimes convenient to group statements by their source, which can be identified by a URI, such as the URI of a particular RDF/XML document. Then, when updates are made to the source, corresponding statements can be changed in the model, as well."
+ },
+ {
+  "id": "rdf#78",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Statement reification and context\nImplementation of scopes does not necessarily require fully reified statements. Some implementations allow a single scope identifier to be associated with a statement that has not been assigned a URI, itself.  Likewise named graphs in which a set of triples is named by a URI can represent context without the need to reify the triples."
+ },
+ {
+  "id": "rdf#79",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Query and inference languages\nThe predominant query language for RDF graphs is SPARQL. SPARQL is an SQL-like language, and a recommendation of the W3C as of January 15, 2008.\nThe following is an example of a SPARQL query to show country capitals in Africa, using a fictional ontology:\n\nOther non-standard ways to query RDF graphs include:\n\nRDQL, precursor to SPARQL, SQL-like\nVersa, compact syntax (non–SQL-like), solely implemented in 4Suite (Python).\nRQL, one of the first declarative languages for uniformly querying RDF schemas and resource descriptions, implemented in RDFSuite.\nSeRQL, part of Sesame\nXUL has a template element in which to declare rules for matching data in RDF. XUL uses RDF extensively for data binding.\nSHACL Advanced Features specification (W3C Working Group Note), the most recent version of which is maintained by the SHACL Community Group, defines support for SHACL Rules, used for data transformations, inferences and mappings of RDF based on SHACL shapes."
+ },
+ {
+  "id": "rdf#80",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Validation and description\nThe predominant language for describing and validating RDF graphs is SHACL (Shapes Constraint Language). SHACL specification is divided in two parts: SHACL Core and SHACL-SPARQL. SHACL Core consists of a list of built-in constraints such as cardinality, range of values and many others. SHACL-SPARQL describes SPARQL-based constraints and an extension mechanism to declare new constraint components.\nOther ways to describe and validate RDF graphs include:\n\nSPARQL Inferencing Notation (SPIN) is a de-facto standard vocabulary for metamodeling SPARQL queries in RDF. SPIN provides semantics for defining inferencing rules and constraints for validation; however, these features have been superseded by SHACL.\nShEx (Shape Expressions) is a concise language for RDF validation and description."
+ },
+ {
+  "id": "rdf#81",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 1: Description of a person named Eric Miller\nThe following example is taken from the W3C website describing a resource with statements \"there is a Person identified by http://www.w3.org/People/EM/contact#me, whose name is Eric Miller, whose email address is em@w3.org, and whose title is Dr.\" \nThe resource \"http://www.w3.org/People/EM/contact#me\" is the subject.\nThe objects are:\n\n\"Eric Miller\" (with a predicate \"whose name is\"),\nmailto:em@w3.org (with a predicate \"whose email address is\"), and\n\"Dr.\" (with a predicate \"whose title is\").\nThe subject is a URI.\nThe predicates also have URIs. For example, the URI for each predicate:"
+ },
+ {
+  "id": "rdf#82",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 1: Description of a person named Eric Miller\n\"whose name is\" is http://www.w3.org/2000/10/swap/pim/contact#fullName,\n\"whose email address is\" is http://www.w3.org/2000/10/swap/pim/contact#mailbox,\n\"whose title is\" is http://www.w3.org/2000/10/swap/pim/contact#personalTitle.\nIn addition, the subject has a type (with URI http://www.w3.org/1999/02/22-rdf-syntax-ns#type), which is person (with URI http://www.w3.org/2000/10/swap/pim/contact#Person).\nTherefore, the following \"subject, predicate, object\" RDF triples can be expressed:"
+ },
+ {
+  "id": "rdf#83",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 1: Description of a person named Eric Miller\nhttp://www.w3.org/People/EM/contact#me, http://www.w3.org/2000/10/swap/pim/contact#fullName, \"Eric Miller\"\nhttp://www.w3.org/People/EM/contact#me, http://www.w3.org/2000/10/swap/pim/contact#mailbox, mailto:em@w3.org\nhttp://www.w3.org/People/EM/contact#me, http://www.w3.org/2000/10/swap/pim/contact#personalTitle, \"Dr.\"\nhttp://www.w3.org/People/EM/contact#me, http://www.w3.org/1999/02/22-rdf-syntax-ns#type, http://www.w3.org/2000/10/swap/pim/contact#Person\nIn standard N-Triples format, this RDF can be written as:\n\nEquivalently, it can be written in standard Turtle (syntax) format as:\n\nOr more concisely, using a common shorthand syntax of Turtle as:\n\nOr, it can be written in RDF/XML format as:"
+ },
+ {
+  "id": "rdf#84",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 2: The postal abbreviation for New York\nCertain concepts in RDF are taken from logic and linguistics, where subject-predicate and subject-predicate-object structures have meanings similar to, yet distinct from, the uses of those terms in RDF. This example demonstrates:\nIn the English language statement  'New York has the postal abbreviation NY' , 'New York'  would be the subject,  'has the postal abbreviation'  the predicate and  'NY'  the object.\nEncoded as an RDF triple, the subject and predicate would have to be resources named by URIs. The object could be a resource or literal element. For example, in the N-Triples form of RDF, the statement might look like:"
+ },
+ {
+  "id": "rdf#85",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 2: The postal abbreviation for New York\nIn this example, \"urn:x-states:New%20York\" is the URI for a resource that denotes the US state New York, \"http://purl.org/dc/terms/alternative\" is the URI for a predicate (whose human-readable definition can be found here), and \"NY\" is a literal string.  Note that the URIs chosen here are not standard, and do not need to be, as long as their meaning is known to whatever is reading them."
+ },
+ {
+  "id": "rdf#86",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 3: A Wikipedia article about Tony Benn\nIn a like manner, given that \"https://en.wikipedia.org/wiki/Tony_Benn\" identifies a particular resource (regardless of whether that URI could be traversed as a hyperlink, or whether the resource is actually the Wikipedia article about Tony Benn), to say that the title of this resource is \"Tony Benn\" and its publisher is \"Wikipedia\" would be two assertions that could be expressed as valid RDF statements. In the N-Triples form of RDF, these statements might look like the following:\n\nTo an English-speaking person, the same information could be represented simply as:"
+ },
+ {
+  "id": "rdf#87",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 3: A Wikipedia article about Tony Benn\nThe title of this resource, which is published by Wikipedia, is 'Tony Benn'\nHowever, RDF puts the information in a formal way that a machine can understand. The purpose of RDF is to provide an encoding and interpretation mechanism so that resources can be described in a way that particular software can understand it; in other words, so that software can access and use information that it otherwise could not use."
+ },
+ {
+  "id": "rdf#88",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Example 3: A Wikipedia article about Tony Benn\nBoth versions of the statements above are wordy because one requirement for an RDF resource (as a subject or a predicate) is that it be unique. The subject resource must be unique in an attempt to pinpoint the exact resource being described. The predicate needs to be unique in order to reduce the chance that the idea of Title or Publisher will be ambiguous to software working with the description. If the software recognizes  http://purl.org/dc/elements/1.1/title (a specific definition for the concept of a title established by the Dublin Core Metadata Initiative), it will also know that this title is different from a land title or an honorary title or just the letters t-i-t-l-e put together.\nThe following example, written in Turtle, shows how such simple claims can be elaborated on, by combining multiple RDF vocabularies. Here, we note that the primary topic of the Wikipedia page is a \"Person\" whose name is \"Tony Benn\":"
+ },
+ {
+  "id": "rdf#89",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Applications\nDBpedia – Extracts facts from Wikipedia articles and publishes them as RDF data.\nYAGO – Similar to DBpedia extracts facts from Wikipedia articles and publishes them as RDF data.\nWikidata – Collaboratively edited knowledge base hosted by the Wikimedia Foundation.\nCreative Commons – Uses RDF to embed license information in web pages and mp3 files.\nFOAF (Friend of a Friend) – designed to describe people, their interests and interconnections.\nHaystack client – Semantic web browser from MIT CS & AI lab.\nIDEAS Group – developing a formal 4D ontology for Enterprise Architecture using RDF as the encoding.\nMicrosoft shipped a product, Connected Services Framework, which provides RDF-based Profile Management capabilities.\nMusicBrainz – Publishes information about Music Albums.\nNEPOMUK, an open-source software specification for a Social Semantic desktop uses RDF as a storage format for collected metadata. NEPOMUK is mostly known because of its integration into the KDE SC 4 desktop environment."
+ },
+ {
+  "id": "rdf#90",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Applications\nCochrane is a global publisher of clinical study meta-analyses in evidence based healthcare. They use an ontology driven data architecture to semantically annotate their published reviews with RDF based structured data.\nRDF Site Summary – one of several \"RSS\" languages for publishing information about updates made to a web page; it is often used for disseminating news article summaries and sharing weblog content.\nSimple Knowledge Organization System (SKOS) – a KR representation intended to support vocabulary/thesaurus applications\nSIOC (Semantically-Interlinked Online Communities) – designed to describe online communities and to create connections between Internet-based discussions from message boards, weblogs and mailing lists.\nSmart-M3 – provides an infrastructure for using RDF and specifically uses the ontology agnostic nature of RDF to enable heterogeneous mashing-up of information\nLV2 - a libre plugin format using Turtle to describe API/ABI capabilities and properties"
+ },
+ {
+  "id": "rdf#91",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Applications\nLV2 - a libre plugin format using Turtle to describe API/ABI capabilities and properties\nSoftware Package Data Exchange – A standard for specifying bills of material.\nSome uses of RDF include research into social networking. It will also help people in business fields understand better their relationships with members of industries that could be of use for product placement.  It will also help scientists understand how people are connected to one another."
+ },
+ {
+  "id": "rdf#92",
+  "doc_id": "rdf",
+  "text": "Resource Description Framework — Applications\nRDF is being used to gain a better understanding of road traffic patterns.  This is because the information regarding traffic patterns is on different websites, and RDF is used to integrate information from different sources on the web. Before, the common methodology was using keyword searching, but this method is problematic because it does not consider synonyms. This is why ontologies are useful in this situation. But one of the issues that comes up when trying to efficiently study traffic is that to fully understand traffic,  concepts related to people, streets, and roads must be well understood. Since these are human concepts, they require the addition of fuzzy logic. This is because values that are useful when describing roads, like slipperiness, are not precise concepts and cannot be measured. This would imply that the best solution would incorporate both fuzzy logic and ontology."
+ },
+ {
+  "id": "owl#93",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Introduction\nThe Web Ontology Language (OWL) is a family of knowledge representation languages for authoring ontologies. Ontologies are a formal way to describe taxonomies and classification networks, essentially defining the structure of knowledge for various domains: the nouns representing classes of objects and the verbs representing relations between the objects."
+ },
+ {
+  "id": "owl#94",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Introduction\nOntologies resemble class hierarchies in object-oriented programming but there are several critical differences. Class hierarchies are meant to represent structures used in source code that evolve fairly slowly (perhaps with monthly revisions) whereas ontologies are meant to represent information on the Internet and are expected to be evolving almost constantly. Similarly, ontologies are typically far more flexible as they are meant to represent information on the Internet coming from all sorts of heterogeneous data sources. Class hierarchies on the other hand tend to be fairly static and rely on far less diverse and more structured sources of data such as corporate databases.\nThe OWL languages are characterized by formal semantics. They are built upon the World Wide Web Consortium's (W3C) standard for objects called the Resource Description Framework (RDF). OWL and RDF have attracted significant academic, medical and commercial interest."
+ },
+ {
+  "id": "owl#95",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Introduction\nIn October 2007, a new W3C working group was started to extend OWL with several new features as proposed in the OWL 1.1 member submission. W3C announced the new version of OWL on 27 October 2009. This new version, called OWL 2, soon found its way into semantic editors such as Protégé and semantic reasoners such as Pellet, RacerPro, FaCT++ and HermiT.\nThe OWL family contains many species, serializations, syntaxes and specifications with similar names. OWL and OWL2 are used to refer to the 2004 and 2009 specifications, respectively. Full species names will be used, including specification version (for example, OWL2 EL). When referring more generally, OWL Family will be used."
+ },
+ {
+  "id": "owl#96",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Early ontology languages\nThere is a long history of ontological development in philosophy and computer science. Since the 1990s, a number of research efforts have explored how the idea of knowledge representation (KR) from artificial intelligence (AI) could be made useful on the World Wide Web. These included languages based on HTML (called SHOE), based on XML (called XOL, later OIL), and various frame-based KR languages and knowledge acquisition approaches."
+ },
+ {
+  "id": "owl#97",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Ontology languages for the web\nIn 2000 in the United States, DARPA started development of DAML led by James Hendler.\nIn March 2001, the Joint EU/US Committee on Agent Markup Languages decided that DAML should be merged with OIL.\nThe EU/US ad hoc Joint Working Group on Agent Markup Languages was convened to develop DAML+OIL as a web ontology language. This group was jointly funded by the DARPA (under the DAML program) and the European Union's Information Society Technologies (IST) funding project. DAML+OIL was intended to be a thin layer above RDFS,\nwith formal semantics based on a description logic (DL).\nDAML+OIL is a particularly major influence on OWL; OWL's design was specifically based on DAML+OIL."
+ },
+ {
+  "id": "owl#98",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Semantic web standards\nThe Semantic Web provides a common framework that allows data to be shared and reused across application, enterprise, and community boundaries."
+ },
+ {
+  "id": "owl#99",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — RDF schema\na declarative representation language influenced by ideas from knowledge representation\nIn the late 1990s, the World Wide Web Consortium (W3C) Metadata Activity started work on RDF Schema (RDFS), a language for RDF vocabulary sharing. The RDF became a W3C Recommendation in February 1999, and RDFS a Candidate Recommendation in March 2000. In February 2001, the Semantic Web Activity replaced the Metadata Activity. In 2004 (as part of a wider revision of RDF) RDFS became a  W3C Recommendation.\nThough RDFS provides some support for ontology specification, the need for a more expressive ontology language had become clear."
+ },
+ {
+  "id": "owl#100",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Web-Ontology Working Group\nAs of Monday, the 31st of May, our working group will officially come to an end. We have achieved all that we were chartered to do, and I believe our work is being quite well appreciated.\nThe World Wide Web Consortium (W3C) created the Web-Ontology Working Group as part of their Semantic Web Activity. It began work on November 1, 2001, with co-chairs James Hendler and Guus Schreiber. The first working drafts of the abstract syntax, reference and synopsis were published in July 2002. OWL became a formal W3C recommendation on February 10, 2004, and the working group was disbanded on May 31, 2004."
+ },
+ {
+  "id": "owl#101",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL Working Group\nIn 2005, at the OWL Experiences And Directions Workshop a consensus formed that recent advances in description logic would allow a more expressive revision to satisfy user requirements more comprehensively whilst retaining good computational properties.\nIn December 2006, the OWL1.1 Member Submission was made to the W3C. The W3C chartered the OWL Working Group as part of the Semantic Web Activity in September 2007. In April 2008, this group decided to call this new language OWL2, indicating a substantial revision.\nOWL 2 became a W3C recommendation in October 2009. OWL 2 introduces profiles to improve scalability in typical applications."
+ },
+ {
+  "id": "owl#102",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Acronym\nWhy not be inconsistent in at least one aspect of a language which is all about consistency?\nOWL was chosen as an easily pronounced acronym that would yield good logos, suggest wisdom, and honor William A. Martin's One World Language knowledge representation project from the 1970s."
+ },
+ {
+  "id": "owl#103",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Adoption\nA 2006 survey of ontologies available on the web collected 688 OWL ontologies. Of these, 199 were OWL Lite, 149 were OWL DL and 337 OWL Full (by syntax). They found that 19 ontologies had in excess of 2,000 classes, and that 6 had more than 10,000. The same survey collected 587 RDFS vocabularies."
+ },
+ {
+  "id": "owl#104",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Ontologies\nAn ontology is an explicit specification of a conceptualization.\nThe data described by an ontology in the OWL family is interpreted as a set of \"individuals\" and a set of \"property assertions\" which relate these individuals to each other. An ontology consists of a set of axioms which place constraints on sets of individuals (called \"classes\") and the types of relationships permitted between them. These axioms provide semantics by allowing systems to infer additional information based on the data explicitly provided. A full introduction to the expressive power of the OWL is provided in the W3C's OWL Guide.\nOWL ontologies can import other ontologies, adding information from the imported ontology to the current ontology."
+ },
+ {
+  "id": "owl#105",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Example\nAn ontology describing families might include axioms stating that a \"hasMother\" property is only present between two individuals when \"hasParent\" is also present, and that individuals of class \"HasTypeOBlood\" are never related via \"hasParent\" to members of the \"HasTypeABBlood\" class. If it is stated that the individual Harriet is related via \"hasMother\" to the individual Sue, and that Harriet is a member of the \"HasTypeOBlood\" class, then it can be inferred that Sue is not a member of \"HasTypeABBlood\". This is, however, only true if the concepts of \"Parent\" and \"Mother\" only mean biological parent or mother and not social parent or mother."
+ },
+ {
+  "id": "owl#106",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Logic\nTo choose a subset of first-order logic that is decidable, propositional logic was used, increasing its  power by adding logics represented by convention with acronyms:"
+ },
+ {
+  "id": "owl#107",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL dialects\nThe W3C-endorsed OWL specification includes the definition of three variants of OWL, with different levels of expressiveness. These are OWL Lite, OWL DL and OWL Full (ordered by increasing expressiveness). Each of these sublanguages is a syntactic extension of its simpler predecessor. The following set of relations hold. Their inverses do not.\n\nEvery legal OWL Lite ontology is a legal OWL DL ontology.\nEvery legal OWL DL ontology is a legal OWL Full ontology.\nEvery valid OWL Lite conclusion is a valid OWL DL conclusion.\nEvery valid OWL DL conclusion is a valid OWL Full conclusion."
+ },
+ {
+  "id": "owl#108",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL Lite\nOWL Lite was originally intended to support those users primarily needing a classification hierarchy and simple constraints. For example, while it supports cardinality constraints, it only permits cardinality values of 0 or 1. It was hoped that it would be simpler to provide tool support for OWL Lite than its more expressive relatives, allowing quick migration path for systems using thesauri and other taxonomies. In practice, however, most of the expressiveness constraints placed on OWL Lite amount to little more than syntactic inconveniences: most of the constructs available in OWL DL can be built using complex combinations of OWL Lite features, and is equally expressive as the description logic 𝒮ℋℐℱ(𝐃). Development of OWL Lite tools has thus proven to be almost as difficult as development of tools for OWL DL, and OWL Lite is not widely used."
+ },
+ {
+  "id": "owl#109",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL DL\nOWL DL is designed to provide the maximum expressiveness possible while retaining computational completeness (either φ or ¬φ holds), decidability (there is an effective procedure to determine whether φ is derivable or not), and the availability of practical reasoning algorithms. OWL DL includes all OWL language constructs, but they can be used only under certain restrictions (for example, number restrictions may not be placed upon properties which are declared to be transitive; and while a class may be a subclass of many classes, a class cannot be an instance of another class). OWL DL is so named due to its correspondence with description logic, a field of research that has studied the logics that form the formal foundation of OWL.\nThis one can be expressed as 𝒮ℋ𝒪ℐ𝒩(𝐃), using the letters logic above."
+ },
+ {
+  "id": "owl#110",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL Full\nOWL Full is based on a different semantics from OWL Lite or OWL DL, and was designed to preserve some compatibility with RDF Schema. For example, in OWL Full a class can be treated simultaneously as a collection of individuals and as an individual in its own right; this is not permitted in OWL DL. OWL Full allows an ontology to augment the meaning of the pre-defined (RDF or OWL) vocabulary. OWL Full is undecidable, so no reasoning software is able to perform complete reasoning for it."
+ },
+ {
+  "id": "owl#111",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL2 profiles\nIn OWL2 there are three sublanguages (known as profiles):\n\nOWL2 EL is a fragment that has polynomial time reasoning complexity. It is based on the description logic ℰℒ.\nOWL2 QL is designed to enable easier access and query to data stored in databases. It is based on the DL-Lite family of description logics.\nOWL2 RL is a rule subset of OWL 2 (the acronym \"RL\" stands for \"Rule Language\"). It is based on the so-called description logic programs (DLP). Later, a logic called ℛℒ corresponding to this profile has been introduced."
+ },
+ {
+  "id": "owl#112",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Syntax\nThe OWL family of languages supports a variety of syntaxes. It is useful to distinguish high level syntaxes aimed at specification from exchange syntaxes more suitable for general use."
+ },
+ {
+  "id": "owl#113",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — High level\nThese are close to the ontology structure of languages in the OWL family."
+ },
+ {
+  "id": "owl#114",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL abstract syntax\nHigh level syntax is used to specify the OWL ontology structure and semantics.\nThe OWL abstract syntax presents an ontology as a sequence of annotations, axioms and facts. Annotations carry machine and human oriented meta-data. Information about the classes, properties and individuals that compose the ontology is contained in axioms and facts only.\nEach class, property and individual is either anonymous or identified by an URI reference. Facts state data either about an individual or about a pair of individual identifiers (that the objects identified are distinct or the same). Axioms specify the characteristics of classes and properties. This style is similar to frame languages, and quite dissimilar to well known syntaxes for DLs and Resource Description Framework (RDF).\nSean Bechhofer, et al. argue that though this syntax is hard to parse, it is quite concrete. They conclude that the name abstract syntax may be somewhat misleading."
+ },
+ {
+  "id": "owl#115",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL2 functional syntax\nThis syntax closely follows the structure of an OWL2 ontology. It is used by OWL2 to specify semantics, mappings to exchange syntaxes and profiles."
+ },
+ {
+  "id": "owl#116",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — RDF syntaxes\nSyntactic mappings into RDF are specified\nfor languages in the OWL family. Several RDF  serialization formats have been devised. Each leads to a syntax for languages in the OWL family through this mapping. RDF/XML is normative."
+ },
+ {
+  "id": "owl#117",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — OWL2 XML syntax\nOWL2 specifies an XML serialization that closely models the structure of an OWL2 ontology."
+ },
+ {
+  "id": "owl#118",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Manchester Syntax\nThe Manchester Syntax is a compact, human readable syntax with a style close to frame languages.\nVariations are available for OWL and OWL2. Not all OWL and OWL2 ontologies can be expressed in this syntax."
+ },
+ {
+  "id": "owl#119",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Examples\nThe W3C OWL 2 Web Ontology Language provides syntax examples."
+ },
+ {
+  "id": "owl#120",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Tea ontology\nConsider an ontology for tea based on a Tea class. First, an ontology identifier is needed. Every OWL ontology must be identified by a URI (http://www.example.org/tea.owl, say). This example provides a sense of the syntax. To save space below, preambles and prefix definitions have been skipped.\n\nOWL2 Functional Syntax\n\nOWL2 XML Syntax\n\nManchester Syntax\n\nRDF/XML syntax\n\nRDF/Turtle"
+ },
+ {
+  "id": "owl#121",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Relation to description logics\nOWL classes correspond to description logic (DL) concepts, OWL properties to DL roles, while individuals are called the same way in both the OWL and the DL terminology."
+ },
+ {
+  "id": "owl#122",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Relation to description logics\nIn the beginning, IS-A was quite simple. Today, however, there are almost as many meanings for this inheritance link as there are knowledge-representation systems.\nEarly attempts to build large ontologies were plagued by a lack of clear definitions. Members of the OWL family have model theoretic formal semantics, and so have strong logical foundations.\nDescription logics are a family of logics that are decidable fragments of first-order logic with attractive and well-understood computational properties. OWL DL and OWL Lite semantics are based on DLs.\nThey combine a syntax for describing and exchanging ontologies, and formal semantics that gives them meaning. For example, OWL DL corresponds to the 𝒮ℋ𝒪ℐ𝒩(𝒟) description logic, while OWL 2 corresponds to the 𝒮ℛ𝒪ℐ𝒬(𝒟) logic. Sound, complete, terminating reasoners (i.e. systems which are guaranteed to derive every consequence of the knowledge in an ontology) exist for these DLs."
+ },
+ {
+  "id": "owl#123",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Relation to RDFS\nOWL Full is intended to be compatible with RDF Schema (RDFS), and to be capable of augmenting the meanings of existing Resource Description Framework (RDF) vocabulary. A model theory describes the formal semantics for\nRDF. This interpretation provides the meaning of RDF and RDFS vocabulary. So, the meaning of OWL Full ontologies are defined by extension of the RDFS meaning, and OWL Full is a semantic extension of RDF."
+ },
+ {
+  "id": "owl#124",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Open world assumption\n[The closed] world assumption implies that everything we don't know is false, while the open world assumption states that everything we don't know is undefined.\nThe languages in the OWL family use the open world assumption. Under the open world assumption, if a statement cannot be proven to be true with current knowledge, we cannot draw the conclusion that the statement is false."
+ },
+ {
+  "id": "owl#125",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Contrast to other languages\nA relational database consists of sets of tuples with the same attributes. SQL is a query and management language for relational databases. Prolog is a logical programming language. Both use the closed world assumption."
+ },
+ {
+  "id": "owl#126",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Biomedical\nOBO Foundry\nNCBO BioPortal\nNCI Enterprise Vocabulary Services"
+ },
+ {
+  "id": "owl#127",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Standards\nSuggested Upper Merged Ontology (SUMO)\nTDWG\nPROV-O, the ontology version of the W3C's PROV-DM\nBasic Formal Ontology (BFO)\nEuropean Materials Modelling Ontology (EMMO)"
+ },
+ {
+  "id": "owl#128",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Browsers\nThe following tools include public ontology browsers:\n\nProtégé OWL"
+ },
+ {
+  "id": "owl#129",
+  "doc_id": "owl",
+  "text": "Web Ontology Language — Limitations\nNo direct language support for n-ary relationships. For example, modelers may wish to describe the qualities of a relation, to relate more than 2 individuals or to relate an individual to a list. This cannot be done within OWL. They may need to adopt a pattern instead which encodes the meaning outside the formal semantics."
+ },
+ {
+  "id": "sparql#130",
+  "doc_id": "sparql",
+  "text": "SPARQL — Introduction\nSPARQL (pronounced \"sparkle\", a recursive acronym for SPARQL Protocol and RDF Query Language) is an RDF query language—that is, a semantic query language for databases—able to retrieve and manipulate data stored in Resource Description Framework (RDF) format. It was made a standard by the RDF Data Access Working Group (DAWG) of the World Wide Web Consortium, and is recognized as one of the key technologies of the semantic web. On 15 January 2008, SPARQL 1.0 was acknowledged by W3C as an official recommendation, and SPARQL 1.1 in March, 2013.\n\nSPARQL allows for a query to consist of triple patterns, conjunctions, disjunctions, and optional patterns.\nImplementations for multiple programming languages exist. There exist tools that allow one to connect and semi-automatically construct a SPARQL query for a SPARQL endpoint, for example ViziQuer.\nIn addition, tools exist to translate SPARQL queries to other query languages, for example to SQL and to XQuery."
+ },
+ {
+  "id": "sparql#131",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nSPARQL allows users to write queries that follow the RDF specification of the W3C. Thus, the entire dataset is \"subject-predicate-object\" triples.  Subjects and predicates are always URI identifiers, but objects can be URIs or literal values.  This single physical schema of three \"columns\" is hypernormalized in that what would be one relational record with (for example) four columns is now four triples with the subject being repeated over and over, the predicate essentially being the column name, and the object being the column value.  The SPARQL syntax offers these features:\n1. Subjects and Objects can be used to find the other including transitively.\nBelow is a set of triples.  It should be clear that\nex:sw001 and ex:sw002 link to ex:sw003, which itself has links:"
+ },
+ {
+  "id": "sparql#132",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nIn SPARQL, the first time a variable is encountered in the expression pipeline, it is populated with result.  The second and subsequent times it is seen, it is used as an input.  If we assign (\"bind\") the URI ex:sw003 to the ?targets variable, then it drives a\nresult into ?src; this tells us all the things that link to ex:sw003 (upstream dependency):\n\nBut with a simple switch of the binding variable, the behavior is reversed.  This will produce all the things upon which ex:sw003 depends (downstream dependency):\n\nEven more attractive is that we can easily instruct SPARQL to transitively follow the path:\n\nBound variables can therefore also be lists and will be operated upon without complicated syntax.  The effect of this is similar to the following pseudocode:"
+ },
+ {
+  "id": "sparql#133",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\n2.  SPARQL expressions are a pipeline\nUnlike SQL which has subqueries and CTEs, SPARQL is much more like MongoDB or SPARK.  Expressions are evaluated exactly in the order they are declared including filtering and joining of data.  The programming model becomes what a SQL statement would be like with multiple WHERE clauses.  The combination of list-aware subjects and objects plus a pipeline approach can yield extremely expressive queries spanning many different domains of data.  JOIN as used in RDBMS and understanding the dynamics of the JOIN (e.g. what column in what table is suitable to join to another, inner vs. outer, etc.) is not relevant in SPARQL (and in some ways simpler) because objects, if a URI and not a literal, implicitly can be used only to find a subject.  Here is a more comprehensive example that illustrates the pipeline using some syntax shortcuts."
+ },
+ {
+  "id": "sparql#134",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nUnlike relational databases, the object column is heterogeneous: the object data type, if not a URI, is usually implied (or specified in the ontology) by the predicate value.  Literal nodes carry type information consistent with the underlying XSD namespace including signed and unsigned short and long integers, single and double precision floats, datetime, penny-precise decimal, Boolean, and string.  Triple store implementations on traditional relational databases will typically store the value as a string and a fourth column will identify the real type.  Polymorphic databases such as MongoDB and SQLite can store the native value directly into the object field."
+ },
+ {
+  "id": "sparql#135",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nThus, SPARQL provides a full set of analytic query operations such as JOIN, SORT, AGGREGATE for data whose schema is intrinsically part of the data rather than requiring a separate schema definition. However, schema information (the ontology) is often provided externally, to allow joining of different datasets unambiguously. In addition, SPARQL provides specific graph traversal syntax for data that can be thought of as a graph.\nThe example below demonstrates a simple query that leverages the ontology definition foaf (\"friend of a friend\").\nSpecifically, the following query returns names and emails of every person in the dataset:"
+ },
+ {
+  "id": "sparql#136",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nThis query joins all of the triples with a matching subject, where the type predicate, \"a\", is a person (foaf:Person), and the person has one or more names (foaf:name) and mailboxes (foaf:mbox).\nFor the sake of readability, the author of this query chose to reference the subject using the variable name \"?person\". Since the first element of the triple is always the subject, the author could have just as easily used any variable name, such as \"?subj\" or \"?x\". Whatever name is chosen, it must be the same on each line of the query to signify that the query engine is to join triples with the same subject.\nThe result of the join is a set of rows – ?person, ?name, ?email. This query returns the ?name and ?email because ?person is often a complex URI rather than a human-friendly string. Note that any ?person may have multiple mailboxes, so in the returned set, a ?name row may appear multiple times, once for each mailbox, duplicating the ?name."
+ },
+ {
+  "id": "sparql#137",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nAn important consideration in SPARQL is that when lookup conditions are not met in the pipeline for terminal entities like ?email, then the whole row is excluded, unlike SQL where typically a null column is returned.  The query above will return only those ?person where both at least one ?name and at least one ?email can be found.  If a ?person had no email, they would be excluded.  To align the output with that expected from an equivalent SQL query, the OPTIONAL keyword is required:"
+ },
+ {
+  "id": "sparql#138",
+  "doc_id": "sparql",
+  "text": "SPARQL — Features\nThis query can be distributed to multiple SPARQL endpoints (services that accept SPARQL queries and return results), computed, and results gathered, a procedure known as federated query.\nWhether in a federated manner or locally, additional triple definitions in the query could allow joins to different subject types, such as automobiles, to allow simple queries, for example, to return a list of names and emails for people who drive automobiles with a high fuel efficiency."
+ },
+ {
+  "id": "sparql#139",
+  "doc_id": "sparql",
+  "text": "SPARQL — Query forms\nIn the case of queries that read data from the database, the SPARQL language specifies four different query variations for different purposes.\n\nSELECT query\nUsed to extract raw values from a SPARQL endpoint, the results are returned in a table format.\nCONSTRUCT query\nUsed to extract information from the SPARQL endpoint and transform the results into valid RDF.\nASK query\nUsed to provide a simple True/False result for a query on a SPARQL endpoint.\nDESCRIBE query\nUsed to extract an RDF graph from the SPARQL endpoint, the content of which is left to the endpoint to decide, based on what the maintainer deems as useful information.\nEach of these query forms takes a WHERE block to restrict the query, although, in the case of the DESCRIBE query, the WHERE is optional.\nSPARQL 1.1 specifies a language for updating the database with several new query forms."
+ },
+ {
+  "id": "sparql#140",
+  "doc_id": "sparql",
+  "text": "SPARQL — Example\nAnother SPARQL query example that models the question \"What are all the country capitals in Africa?\":"
+ },
+ {
+  "id": "sparql#141",
+  "doc_id": "sparql",
+  "text": "SPARQL — Example\nVariables are indicated by a ? or $ prefix. Bindings for ?capital and the ?country will be returned. When a triple ends with a semicolon, the subject from this triple will implicitly complete the following pair to an entire triple. So for example ex:isCapitalOf ?y is short for ?x ex:isCapitalOf ?y.\nThe SPARQL query processor will search for sets of triples that match these four triple patterns, binding the variables in the query to the corresponding parts of each triple. Important to note here is the \"property orientation\" (class matches can be conducted solely through class-attributes or properties – see Duck typing).\nTo make queries concise, SPARQL allows the definition of prefixes and base URIs in a fashion similar to Turtle. In this query, the prefix \"ex\" stands for “http://example.com/exampleOntology#”."
+ },
+ {
+  "id": "sparql#142",
+  "doc_id": "sparql",
+  "text": "SPARQL — Example\nSPARQL has native dateTime operations as well.  Here is a query that will return all pieces of software where the EOL date is greater than or equal to 1000 days from the release date and the release year is 2020 or greater:"
+ },
+ {
+  "id": "sparql#143",
+  "doc_id": "sparql",
+  "text": "SPARQL — Extensions\nGeoSPARQL defines filter functions for geographic information system (GIS) queries using well-understood OGC standards (GML, WKT, etc.).\nSPARUL is another extension to SPARQL. It enables the RDF store to be updated with this declarative query language, by adding INSERT and DELETE methods.\nXSPARQL is an integrated query language combining XQuery with SPARQL to query both XML and RDF data sources at once."
+ },
+ {
+  "id": "sparql#144",
+  "doc_id": "sparql",
+  "text": "SPARQL — Implementations\nOpen source, reference SPARQL implementations\n\nEclipse RDF4J, formerly OpenRDF Sesame\nApache Jena\nOpenLink Virtuoso\nSee List of SPARQL implementations for more comprehensive coverage, including triplestore, APIs, and other storages that have implemented the SPARQL standard."
+ },
+ {
+  "id": "berners_lee#145",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Introduction\nSir Timothy John Berners-Lee (born 8 June 1955), also known as TimBL, is an English computer scientist best known as the inventor of the World Wide Web, HTML, the URL system, and HTTP. He is a professorial research fellow at the University of Oxford and a professor emeritus at the Massachusetts Institute of Technology (MIT).\nBerners-Lee proposed an information management system on 12 March 1989 and implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet in mid-November. He devised and implemented the first Web browser and Web server and helped foster the Web's subsequent development. He is the founder and emeritus director of the World Wide Web Consortium (W3C), which oversees the continued development of the Web. He co-founded (with Rosemary Leith) the World Wide Web Foundation. In 2009, he was elected Foreign Associate of the National Academy of Sciences."
+ },
+ {
+  "id": "berners_lee#146",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Introduction\nBerners-Lee was previously a senior researcher and holder of the 3Com founder's chair at the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL). He is a director of the Web Science Research Initiative (WSRI) and a member of the advisory board of the MIT Center for Collective Intelligence. In 2011, he was named a member of the board of trustees of the Ford Foundation. He is a founder and president of the Open Data Institute and is an advisor at social network MeWe. In 2004, Berners-Lee was knighted by Queen Elizabeth II for his pioneering work. He received the 2016 Turing Award \"for inventing the World Wide Web, the first web browser, and the fundamental protocols and algorithms allowing the Web to scale\". He was named in Time magazine's list of the 100 Most Important People of the 20th century and has received a number of other accolades for his invention."
+ },
+ {
+  "id": "berners_lee#147",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Early life\nBerners-Lee was born in London on 8 June 1955, the son of the mathematicians and computer scientists Mary Lee Berners-Lee (née  Woods; 1924–2017) and Conway Berners-Lee (1921–2019). His parents were both from Birmingham and worked on the Ferranti Mark 1, the first commercially built computer. He has three younger siblings; his brother, Mike, is a professor of ecology and climate change management.\nBerners-Lee attended Sheen Mount Primary School, then Emanuel School (a direct grant grammar school at the time) from 1969 to 1973. A keen trainspotter as a child, he learnt about electronics from tinkering with a model railway.\nIn 1976, Berners-Lee took a first in physics from The Queen's College, Oxford. While there, he made a computer out of an old television set he had purchased from a repair shop."
+ },
+ {
+  "id": "berners_lee#148",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nAfter graduation, Berners-Lee worked as an engineer at the telecommunications company Plessey in Poole, Dorset. In 1978, he joined D. G. Nash in Ferndown, Dorset, where he helped create typesetting software for printers.\nBerners-Lee worked as an independent contractor at CERN from June to December 1980. While in Geneva, he proposed a project based on the concept of hypertext, to facilitate sharing and updating information among researchers. To demonstrate it, he built a prototype system named ENQUIRE.\nAfter leaving CERN in late 1980, he went to work at John Poole's Image Computer Systems, Ltd, in Bournemouth, Dorset. He ran the company's technical side for three years. The project he worked on was a \"real-time remote procedure call\" which gave him experience in computer networking. In 1984, he returned to CERN as a fellow.\nIn 1989, CERN was the largest Internet node in Europe and Berners-Lee saw an opportunity to join hypertext with the Internet:"
+ },
+ {
+  "id": "berners_lee#149",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nI just had to take the hypertext idea and connect it to the TCP and DNS ideas and—ta-da!—the World Wide Web.\nCreating the web was really an act of desperation, because the situation without it was very difficult when I was working at CERN later. Most of the technology involved in the web, like the hypertext, like the Internet, multifont text objects, had all been designed already. I just had to put them together. It was a step of generalising, going to a higher level of abstraction, thinking about all the documentation systems out there as being possibly part of a larger imaginary documentation system."
+ },
+ {
+  "id": "berners_lee#150",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nBerners-Lee wrote his proposal in March 1989 and redistributed it in 1990. It then was accepted by his manager, Mike Sendall, who called his proposals \"vague, but exciting\". Robert Cailliau had independently proposed a project to develop a hypertext system at CERN, and joined Berners-Lee as a partner in his efforts to get the web off the ground. They used similar ideas to those underlying the ENQUIRE system to create the World Wide Web, for which Berners-Lee designed and built the first web browser. His software also functioned as an editor (called WorldWideWeb, running on the NeXTSTEP operating system), and the first Web server, CERN httpd (Hypertext Transfer Protocol daemon)."
+ },
+ {
+  "id": "berners_lee#151",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nBerners-Lee published the first website, which described the project itself, on 20 December 1990; it was available to the Internet from the CERN network. The site provided an explanation of what the World Wide Web was, and how people could use a browser and set up a web server and a website. On 6 August 1991, Berners-Lee first posted, on Usenet, a public invitation for collaboration with the WorldWideWeb project.\nIn a list of 80 cultural moments that shaped the world, chosen by a panel of 25 eminent scientists, academics, writers and world leaders in 2016, the invention of the World Wide Web was ranked number one, with the entry stating: \"The fastest growing communications medium of all time, the Internet has changed the shape of modern life forever. We can connect with each other instantly, all over the world.\""
+ },
+ {
+  "id": "berners_lee#152",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nIn 1994, Berners-Lee founded the W3C at the Massachusetts Institute of Technology. It comprised various companies willing to create standards and recommendations to improve the quality of the Web. Berners-Lee made his idea available freely, with no patent and no royalties due. The World Wide Web Consortium decided that its standards should be based on royalty-free technology, so that anyone could easily adopt them.\nBerners-Lee participated in Curl Corp's attempt to develop and promote the Curl programming language.\nIn 2001, Berners-Lee became a patron of the East Dorset Heritage Trust, having previously lived in Colehill in Wimborne, East Dorset. In 2004, he accepted a chair in computer science at the School of Electronics and Computer Science, University of Southampton, Hampshire, to work on the Semantic Web."
+ },
+ {
+  "id": "berners_lee#153",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Career and research\nIn a Times article in October 2009, Berners-Lee admitted that the initial pair of slashes (\"//\") in a web address were \"unnecessary\". He told the newspaper that he easily could have designed web addresses without the slashes. \"There you go, it seemed like a good idea at the time,\" he said in his lighthearted apology.\nSince 2021, Berners-Lee has been an advisory board member of Proton Foundation."
+ },
+ {
+  "id": "berners_lee#154",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nBy 2010, he created data.gov.uk alongside Nigel Shadbolt. Of the Ordnance Survey data in April 2010, Berners-Lee said: \"The changes signal a wider cultural change in government based on an assumption that information should be in the public domain unless there is a good reason not to—not the other way around.\" He added: \"Greater openness, accountability and transparency in Government will give people greater choice and make it easier for individuals to get more directly involved in issues that matter to them.\"\nIn November 2009, Berners-Lee launched the World Wide Web Foundation (WWWF)."
+ },
+ {
+  "id": "berners_lee#155",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nBerners-Lee is one of the pioneer voices in favour of net neutrality, and has expressed the view that Internet service providers should supply \"connectivity with no strings attached\", neither controlling nor monitoring customers' browsing activity without their express consent. He advocates the idea that net neutrality is a kind of human network right: \"Threats to the Internet, such as companies or governments that interfere with or snoop on Internet traffic, compromise basic human network rights.\" Berners-Lee participated in an open letter to the US Federal Communications Commission (FCC). He and 20 other Internet pioneers urged the FCC to cancel a vote on 14 December 2017 to uphold net neutrality. The letter was addressed to Senator Roger Wicker, Senator Brian Schatz, Representative Marsha Blackburn and Representative Michael F. Doyle."
+ },
+ {
+  "id": "berners_lee#156",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nBerners-Lee was honoured as the \"Inventor of the World Wide Web\" during the 2012 Summer Olympics opening ceremony, in which he appeared working with a vintage NeXT Computer. He tweeted \"This is for everyone\" which appeared in LED lights attached to the chairs of the audience. In 2025, he used the phrase as the title for his book on the history of the Internet, This Is for Everyone."
+ },
+ {
+  "id": "berners_lee#157",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nBerners-Lee joined the board of advisors of start-up State.com, based in London. As of May 2012, he is president of the Open Data Institute, which he and Shadbolt co-founded in 2012.\nThe Alliance for Affordable Internet (A4AI) was launched in 2013, and Berners-Lee is leading the coalition of public and private organisations that includes Google, Facebook, Intel and Microsoft. The A4AI seeks to make Internet access more affordable so that access is broadened in the developing world where, in 2013, only 31% of people were online. Berners-Lee will work with those aiming to decrease Internet access prices so that they fall below the UN Broadband Commission's worldwide target of 5% of monthly income."
+ },
+ {
+  "id": "berners_lee#158",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nBerners-Lee holds the founders chair in Computer Science at the Massachusetts Institute of Technology, where he heads the Decentralized Information Group and is leading Solid, a joint project with the Qatar Computing Research Institute that aims to radically change the way Web applications work, resulting in true data ownership and greater privacy. In 2016, he joined the Department of Computer Science at Oxford University as a professorial research fellow and as a fellow of Christ Church, one of the Oxford colleges."
+ },
+ {
+  "id": "berners_lee#159",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nFrom the mid-2010s, Berners-Lee initially remained neutral on the emerging Encrypted Media Extensions (EME) proposal with its controversial digital rights management (DRM) implications. In March 2017 he felt he had to take a position, which was to support the EME proposal. He reasoned EME's virtues whilst noting DRM was inevitable. As W3C director, he approved the finalised specification in July 2017. His stance was opposed by some, including Electronic Frontier Foundation (EFF), the anti-DRM campaign Defective by Design and the Free Software Foundation. Concerns included being not supportive of the Internet's open philosophy against commercial interests and risks of users being forced to use a particular web browser to view specific DRM content. The EFF raised a formal appeal. It did not succeed, and the EME specification became a formal W3C recommendation in September 2017."
+ },
+ {
+  "id": "berners_lee#160",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Policy work\nOn 30 September 2018, Berners-Lee announced his open-source startup Inrupt to fuel a commercial ecosystem around the Solid project, which aims to give users more control over their personal data and let them choose where the data goes, who's allowed to see certain elements and which apps are allowed to see that data.\nIn November 2019, at the Internet Governance Forum in Berlin, Berners-Lee and the WWWF launched Contract for the Web, a campaign initiative to persuade governments, companies and citizens to commit to nine principles to stop \"misuse\", with the warning that \"if we don't act now – and act together – to prevent the web being misused by those who want to exploit, divide and undermine, we are at risk of squandering [its potential for good]\"."
+ },
+ {
+  "id": "berners_lee#161",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Awards and honours\nBerners-Lee has received many awards and honours. He was knighted by Queen Elizabeth II in the 2004 New Year Honours \"for services to the global development of the Internet\", and was invested formally on 16 July 2004.\nOn 13 June 2007, he was appointed to the Order of Merit (OM), an order restricted to 24 living members, plus any honorary members. Bestowing membership of the Order of Merit is within the personal purview of the Sovereign and does not require recommendation by ministers or the Prime Minister.\nHe was elected a Fellow of the Royal Society (FRS) in 2001. He was also elected as a member into the American Philosophical Society in 2004 and the National Academy of Engineering in 2007.\nHe has been conferred honorary degrees from a number of universities around the world, including Manchester (his parents worked on the Manchester Mark 1 in the 1940s), Harvard and Yale."
+ },
+ {
+  "id": "berners_lee#162",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Awards and honours\nIn 2012, Berners-Lee was among the British cultural icons selected by artist Sir Peter Blake to appear in a new version of his most famous artwork – the Beatles' Sgt. Pepper's Lonely Hearts Club Band album cover – to celebrate the British cultural figures of his life that he most admires to mark his 80th birthday.\nIn 2013, he was awarded the inaugural Queen Elizabeth Prize for Engineering. On 4 April 2017, he received the 2016 Association for Computing Machinery's Turing Award for his invention of the World Wide Web, the first web browser, and their fundamental protocols and algorithms."
+ },
+ {
+  "id": "berners_lee#163",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Personal life\nBerners-Lee has said \"I like to keep work and personal life separate.\"\nBerners-Lee has married three times. Following final exams in Oxford, he married Jane Northcote (daughter of Cambridge biologist Don Northcote) in 1976. They moved together to Poole to work at Plessey, and then moved in 1980 to work at CERN together for a six-month contract. After their return to Britain, they decided to end their marriage.\nIn 1990, Berners-Lee married Nancy Carlson, an American computer programmer. She was also working in Switzerland at the World Health Organization. They had two children and divorced in 2011. In 2014, he married Rosemary Leith at the Chapel Royal, St. James's Palace in London. Leith is a Canadian Internet and banking entrepreneur and a founding director of Berners-Lee's World Wide Web Foundation. The couple also collaborate on venture capital to support artificial intelligence companies."
+ },
+ {
+  "id": "berners_lee#164",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Personal life\nBerners-Lee was raised as an Anglican, but he turned away from religion in his youth. After he became a parent, he became a Unitarian Universalist (UU). When asked whether he believes in God, he said: \"Not in the sense of most people. I'm atheist and Unitarian Universalist.\"\nThe web's source code was auctioned by Sotheby's in London during 23–30 June 2021, as a non-fungible token (NFT) by Berners-Lee. It sold for US$5,434,500. The proceeds would reportedly be used to fund initiatives by Berners-Lee and Leith.\nIn 2025, Berners-Lee published a memoir, This Is for Everyone, with ghostwriter Stephen Witt. Stephen Fry recorded the audiobook.\nIn November 2025, Berners-Lee was the guest on BBC Radio 4's Desert Island Discs. His choices included \"Brothers in Arms\" by Dire Straits, \"End of the Line\" by the Traveling Wilburys, and \"Four Strong Winds\" by Ian & Sylvia. His luxury item was a chromatic harmonica."
+ },
+ {
+  "id": "berners_lee#165",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Views\nBerners-Lee views Wikipedia as probably the best single example of what he wanted the World Wide Web to be. At the end of Chapter 7 of This is for Everyone, he writes: Wikipedia has grown to contain millions of articles on every subject known to our species – an invaluable repository of human knowledge that I consider one of the modern wonders of the world. What made this system work was intercreativity – a group of people being creative. Wikipedia is probably the best single example of what I wanted the web to be. \nBerners-Lee is an advocate for a universal basic income."
+ },
+ {
+  "id": "berners_lee#166",
+  "doc_id": "berners_lee",
+  "text": "Tim Berners-Lee — Books\nBerners-Lee, Tim; Fischetti, Mark (22 September 1999). Weaving the Web: The Original Design and Ultimate Destiny of the World Wide Web by Its Inventor (First hardcover ed.). San Francisco: HarperBusiness. ISBN 0062515861. OCLC 41238513.\nBerners-Lee, Tim (9 September 2025). This is for Everyone: The Unfinished Story of the World Wide Web (First hardcover ed.). New York: Farrar, Straus and Giroux. ISBN 978-0374612467. OCLC 1478325766."
+ },
+ {
+  "id": "w3c#167",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Introduction\nThe World Wide Web Consortium (W3C) is the main international standards organization for the World Wide Web. Founded in 1994 by Tim Berners-Lee, the consortium is made up of member organizations that maintain full-time staff working together in the development of technical standards for the World Wide Web. As of March 2026, W3C has 331 members. The organization has been led by CEO Seth Dobbs since October 2023. W3C also engages in education and outreach, develops software and serves as an open forum for discussion about the Web."
+ },
+ {
+  "id": "w3c#168",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — History\nThe World Wide Web Consortium (W3C) was founded in 1994 by Tim Berners-Lee after he left the European Organization for Nuclear Research (CERN) in October 1994. It was founded at the Massachusetts Institute of Technology (MIT) Laboratory for Computer Science with support from the European Commission, and the Defense Advanced Research Projects Agency, which had pioneered the ARPANET, the most direct predecessor to the modern Internet. It was located in Technology Square until 2004, when it moved, with the MIT Computer Science and Artificial Intelligence Laboratory, to the Stata Center.\nThe organization tries to foster compatibility and agreement among industry members in the adoption of new standards defined by the W3C. Incompatible versions of HTML are offered by different vendors, causing inconsistency in how web pages are displayed. The consortium tries to get all those vendors to implement a set of core principles and components that are chosen by the consortium."
+ },
+ {
+  "id": "w3c#169",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — History\nIt was originally intended that CERN host the European branch of W3C; however, CERN wished to focus on particle physics, not information technology. In April 1995, the French Institute for Research in Computer Science and Automation became the European host of W3C, with Keio University Research Institute at SFC becoming the Asian host in September 1996. Starting in 1997, W3C created regional offices around the world. As of September 2009, it had eighteen World Offices covering Australia, the Benelux countries (Belgium, Netherlands and Luxembourg), Brazil, China, Finland, Germany, Austria, Greece, Hong Kong, Hungary, India, Israel, Italy, South Korea, Morocco, South Africa, Spain, Sweden, and, as of 2016, the United Kingdom and Ireland.\nIn 2010, Jeffrey M. Jaffe was named CEO of W3C. He continued in that position until 2022."
+ },
+ {
+  "id": "w3c#170",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — History\nIn 2010, Jeffrey M. Jaffe was named CEO of W3C. He continued in that position until 2022.\nIn October 2012, W3C convened a community of major web players and publishers to establish a MediaWiki wiki that seeks to document open web standards called the WebPlatform and WebPlatform Docs.\nIn January 2013, Beihang University became the Chinese host.\nIn 2022 the W3C WebFonts Working Group won an Emmy Award from the National Academy of Television Arts and Sciences for standardizing font technology for custom downloadable fonts and typography for web and TV devices.\nOn 1 January 2023, it reformed as a public-interest 501(c)(3) non-profit organization. In October 2023, Seth Dobbs was named as the organization's chief executive officer."
+ },
+ {
+  "id": "w3c#171",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — History\nIn October 2025, the W3C unveiled a new logo, signaling positive changes and updated its tagline to \"making the web work — for everyone\". This reflects its evolution into a nonprofit organization and continued focus on global accessibility, collaboration, innovation, privacy, security and the future of web standards."
+ },
+ {
+  "id": "w3c#172",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Standardization process\nW3C develops technical specifications for HTML5, CSS, SVG, WOFF, the Semantic Web Stack, XML, and other technologies. Sometimes, when a specification becomes too large, it is split into independent modules that can progress through development stages at their own pace. Subsequent editions of a module or specification are known as levels and are denoted by the first integer in the title (e.g. CSS3 is Level 3). Subsequent revisions on each level are denoted by an integer following a decimal point (for example, CSS2.1 is Revision 1).\nThe W3C standard formation process is defined within the W3C process document, outlining four development stages through which each new standard or recommendation must progress."
+ },
+ {
+  "id": "w3c#173",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Working draft (WD)\nAfter enough content has been gathered from 'editor drafts' and discussion, it may be published as a working draft (WD) for review by the community. A WD document is the first form of a standard that is publicly available. Commentary by virtually anyone is accepted, though no promises are made with regard to action on any particular element commented upon.\nAt this stage, the standard document may have significant differences from its final form. As such, anyone who implements WD standards should be ready to significantly modify their implementations once the standard is finalized."
+ },
+ {
+  "id": "w3c#174",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Candidate recommendation (CR)\nA candidate recommendation is a version of a more advanced standard than the WD. At this point, the group responsible for the standard is satisfied that the standard meets its goal. The purpose of the CR is to elicit aid from the development community on how implementable the standard is.\nThe standard document may change further, but significant features are mostly decided at this point. The design of those features can still change due to feedback from implementers."
+ },
+ {
+  "id": "w3c#175",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Proposed recommendation (PR)\nA proposed recommendation is the version of a standard that has passed the prior two levels. The users of the standard provide input. At this stage, the document is submitted to the W3C Advisory Council for final approval.\nWhile this step is important, it rarely causes any significant changes to a standard as it passes to the next phase."
+ },
+ {
+  "id": "w3c#176",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — W3C recommendation (REC)\nThe standard has been finalized and is now official. At this point, the standard has undergone extensive review and testing, under both theoretical and practical conditions. The standard is now endorsed by the W3C, indicating its readiness for deployment to the public, and encouraging more widespread support among implementers and authors."
+ },
+ {
+  "id": "w3c#177",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Later revisions\nA recommendation may be updated or extended by separately-published, non-technical errata or editor drafts until sufficient substantial edits accumulate for producing a new edition or level of the recommendation. Additionally, the W3C publishes various kinds of informative notes which are to be used as references."
+ },
+ {
+  "id": "w3c#178",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Administration\nIn January 2023, after 28 years of being jointly administered by the MIT Computer Science and Artificial Intelligence Laboratory (located in Stata Center) in the United States, the European Research Consortium for Informatics and Mathematics (ERCIM; in Sophia Antipolis, France), Keio University (in Japan) and Beihang University (in China), the W3C incorporated as a legal entity, becoming a public-interest not-for-profit organization.\nThe W3C has a staff team of 70–80 worldwide as of 2015. W3C is run by a management team which allocates resources and designs strategy. It also includes an advisory board that supports strategy and legal matters and helps resolve conflicts. The majority of standardization work is done by external experts in the W3C's various working groups."
+ },
+ {
+  "id": "w3c#179",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Membership\nThe Consortium is governed by its membership. The list of members is available to the public. Members include businesses, nonprofit organizations, universities, governmental entities, and individuals.\nMembership requirements are transparent except for one requirement: An application for membership must be reviewed and approved by the W3C. Many guidelines and requirements are stated in detail, but there is no final guideline about the process or standards by which membership might be finally approved or denied.\nThe cost of membership is given on a sliding scale, depending on the character of the organization applying and the country in which it is located. Countries are categorized by the World Bank's most recent grouping by gross national income per capita."
+ },
+ {
+  "id": "w3c#180",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Criticism\nIn a 2007 issue of the German C't computer magazine in an interview with Herbert Braun Opera CTO Håkon Wium Lie, who introduced the concept of style sheets to the W3C in 1994 and worked on the CSS specification, criticized the course of the W3C, its recommendation of XHTML, and the general standardization process in the W3C:"
+ },
+ {
+  "id": "w3c#181",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Criticism\nSecond, W3C has also evolved. In the early days, turning a Working Draft into a Recommendation was a simple month-long stint as Proposed Recommendation. These days, you have to issue call for comments, answer all the comments, make sure there are two implementations, and so forth. The formal process has become much longer and only specifications that have serious backers end up as Recommendations."
+ },
+ {
+  "id": "w3c#182",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Criticism\nIn 2012 and 2013, the W3C started considering adding DRM-specific Encrypted Media Extensions (EME) to HTML5, which was criticised as being against the openness, interoperability, and vendor neutrality that distinguished websites built using only W3C standards from those requiring proprietary plug-ins like Flash. On 18 September 2017, the W3C published the EME specification as a recommendation, leading to the Electronic Frontier Foundation's resignation from W3C. As feared by the opponents of EME, as of 2020, none of the widely used Content Decryption Modules used with EME are available for licensing without a per-browser licensing fee.\nIn October 2017, the W3C received the Austrian \"Big Brother Award\", a negative award, in the \"Government and Administration\" category for introducing EME as a web standard."
+ },
+ {
+  "id": "w3c#183",
+  "doc_id": "w3c",
+  "text": "World Wide Web Consortium — Java packages\nThe org.w3c.dom standard library packages in the Java programming language provide interfaces for the Document Object Model (DOM).\nThe org.xml.sax standard library packages provide interfaces for the Simple API for XML (SAX)."
+ },
+ {
+  "id": "dbpedia#184",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Introduction\nDBpedia (from \"DB\" for \"database\") is a project aiming to extract structured content from the information created in the Wikipedia project. This structured information is made available on the World Wide Web using OpenLink Virtuoso. DBpedia allows users to semantically query relationships and properties of Wikipedia resources, including links to other related datasets.\nThe project was heralded as \"one of the more famous pieces\" of the decentralized linked data effort by Tim Berners-Lee, the inventor of the World Wide Web. As of June 2021, DBpedia contained over 850 million semantic triples."
+ },
+ {
+  "id": "dbpedia#185",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Background\nThe project was started by people at the Free University of Berlin and Leipzig University in collaboration with OpenLink Software, and is now maintained by people at the University of Mannheim, Leipzig University, and the University of Pennsylvania. The first publicly available dataset was published in 2007. The data is made available under free licenses (CC BY-SA), allowing others to reuse the dataset; it does not use an open data license to waive the sui generis database rights.\nWikipedia articles consist mostly of free text, but also include structured information embedded in the articles, such as \"infobox\" tables (the pull-out panels that appear in the top right of the default view of many Wikipedia articles, or at the start of the mobile versions), categorization information, images, geo-coordinates and links to external web pages. This structured information is extracted and put in a uniform dataset which can be queried."
+ },
+ {
+  "id": "dbpedia#186",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Dataset\nThe 2016-04 release of the DBpedia data set describes 6.0 million entities, out of which 5.2 million are classified in a consistent ontology, including 1.5 million persons, 810,000 places, 135,000 music albums, 106,000 films, 20,000 video games, 275,000 organizations, 301,000 species and 5,000 diseases. DBpedia uses the Resource Description Framework (RDF) to represent extracted information and consists of 9.5 billion RDF triples, of which 1.3 billion were extracted from the English Wikipedia and 5.0 billion from other language editions.\nFrom this data set, information spread across multiple pages can be extracted. For example, book authorship can be put together from pages about the work, or the author."
+ },
+ {
+  "id": "dbpedia#187",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Dataset\nOne of the challenges in extracting information from Wikipedia is that the same concepts can be expressed using different parameters in infobox and other templates, such as |birthplace= and |placeofbirth=. Because of this, queries about where people were born would have to search for both of these properties in order to get more complete results.  As a result, the DBpedia Mapping Language has been developed to help in mapping these properties to an ontology while reducing the number of synonyms. Due to the large diversity of infoboxes and properties in use on Wikipedia, the process of developing and improving these mappings has been opened to public contributions."
+ },
+ {
+  "id": "dbpedia#188",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Dataset\nVersion 2014 was released in September 2014. A main change since previous versions was the way abstract texts were extracted. Specifically, running a local mirror of Wikipedia and retrieving rendered abstracts from it made extracted texts considerably cleaner. Also, a new data set extracted from Wikimedia Commons was introduced.\nAs of June 2021, DBpedia contains over 850 million triples."
+ },
+ {
+  "id": "dbpedia#189",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Examples\nDBpedia extracts factual information from Wikipedia pages, allowing users to find answers to questions where the information is spread across multiple Wikipedia articles. Data is accessed using an SQL-like query language for RDF called SPARQL. \nFor example, if one were interested in the Japanese shōjo manga series Tokyo Mew Mew, and wanted to find the genres of other works written by its illustrator Mia Ikumi. DBpedia combines information from Wikipedia's entries on Tokyo Mew Mew, Mia Ikumi and on this author's works such as Super Doll Licca-chan and Koi Cupid. Since DBpedia normalises information into a single database, the following query can be asked without needing to know exactly which entry carries each fragment of information, and will list related genres:"
+ },
+ {
+  "id": "dbpedia#190",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Use cases\nDBpedia has a broad scope of entities covering different areas of human knowledge. This makes it a natural hub for connecting datasets, where external datasets could link to its concepts. The DBpedia dataset is interlinked on the RDF level with various other Open Data datasets on the Web. This enables applications to enrich DBpedia data with data from these datasets. As of September 2013, there are more than 45 million interlinks between DBpedia and external datasets including: Freebase, OpenCyc, UMBEL, GeoNames, MusicBrainz, CIA World Factbook, DBLP, Project Gutenberg, DBtune Jamendo, Eurostat, UniProt, Bio2RDF, and US Census data. The Thomson Reuters initiative OpenCalais, the Linked Open Data project of The New York Times, the Zemanta API and DBpedia Spotlight also include links to DBpedia. The BBC uses DBpedia to help organize its content. Faviki uses DBpedia for semantic tagging. Samsung also includes DBpedia in its \"Knowledge Sharing Platform\"."
+ },
+ {
+  "id": "dbpedia#191",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Use cases\nSuch a source of structured cross-domain knowledge is fertile ground for artificial intelligence systems. DBpedia was used as one of the knowledge sources in IBM Watson's Jeopardy! winning system.\nAmazon provides a DBpedia Public Data Set that can be integrated into Amazon Web Services applications.\nData about creators from DBpedia can be used for enriching artworks' sales observations.\nThe crowdsourcing software company, Ushahidi, built a prototype of its software that leveraged DBpedia to perform semantic annotations on citizen-generated reports. The prototype incorporated the \"YODIE\" (Yet another Open Data Information Extraction system) service developed by the University of Sheffield, which uses DBpedia to perform the annotations. The goal for Ushahidi was to improve the speed and facility with which incoming reports could be validated managed."
+ },
+ {
+  "id": "dbpedia#192",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — DBpedia Spotlight\nDBpedia Spotlight is a tool for annotating mentions of DBpedia resources in text. This allows linking unstructured information sources to the linked open data cloud through DBpedia. DBpedia Spotlight performs named entity extraction, including entity detection and name resolution (in other words, disambiguation). It can also be used for named entity recognition, and other information extraction tasks. DBpedia Spotlight aims to be customizable for many use cases. Instead of focusing on a few entity types, the project strives to support the annotation of all 3.5 million entities and concepts from more than 320 classes in DBpedia. The project started in June 2010 at the Web Based Systems Group at the Free University of Berlin."
+ },
+ {
+  "id": "dbpedia#193",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — DBpedia Spotlight\nDBpedia Spotlight is publicly available as a web service for testing and a Java/Scala API licensed via the Apache License. The DBpedia Spotlight distribution includes a jQuery plugin that allows developers to annotate pages anywhere on the Web by adding one line to their page. Clients are also available in Java or PHP. The tool handles various languages through its demo page and web services. Internationalization is supported for any language that has a Wikipedia edition."
+ },
+ {
+  "id": "dbpedia#194",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — Archivo ontology database\nFrom 2020, the DBpedia project provides a regularly updated database of web‑accessible ontologies written in the Web Ontology Language (OWL).  Archivo also provides a four star rating scheme for the ontologies it scrapes, based on accessibility, quality, and related fitness‑for‑use criteria.  For instance, SHACL compliance for graph‑based data is evaluated when appropriate.  Ontologies should also contain metadata about their characteristics and specify a public license describing their terms‑of‑use.  As of June 2021 the Archivo database contains 1368 entries."
+ },
+ {
+  "id": "dbpedia#195",
+  "doc_id": "dbpedia",
+  "text": "DBpedia — History\nDBpedia was initiated in 2007 by Sören Auer, Christian Bizer, Georgi Kobilarov, Jens Lehmann, Richard Cyganiak and Zachary Ives."
+ },
+ {
+  "id": "wikidata#196",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Introduction\nWikidata is a collaboratively edited multilingual knowledge graph hosted by the Wikimedia Foundation. It is a source of open data released under the Creative Commons CC0 public domain dedication. It is for the use of both Wikimedia and external projects. Launched in October 2012, it is developed mainly by Wikimedia Deutschland and supplies the interlanguage links and some of the infobox data used by Wikipedia and other Wikimedia projects. Wikidata is a wiki powered by the software MediaWiki, including its extension for semi-structured data, the Wikibase. As of early 2025, Wikidata had 1.65 billion item statements. As of October 2026, Wikidata held more than 123 million data entities, such as items, properties and lexemes."
+ },
+ {
+  "id": "wikidata#197",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Concept\nWikidata is a document-oriented database, focusing on items, which represent any kind of topic, concept, or object. Each item is allocated a unique persistent identifier called its QID, a positive integer prefixed with the upper-case letter \"Q\". This makes it possible to provide translations of the basic information describing the topic each item covers without favoring any particular language.\nSome examples of items and their QIDs are 1988 Summer Olympics (Q8470), love (Q316), Johnny Cash (Q42775), Elvis Presley (Q303), and Gorilla (Q36611).\nItem labels do not need to be unique. For example, there are two items named \"Elvis Presley\": Elvis Presley (Q303), which represents the American singer and actor, and Elvis Presley (Q610926), which represents his self-titled album. However, the combination of a label and its description must be unique. To avoid ambiguity, an item's QID is hence linked to this combination."
+ },
+ {
+  "id": "wikidata#198",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Main parts\nFundamentally, an item consists of:\n\nAn identifier (the QID), related to a label and a description.\nOptionally, multiple aliases and some number of statements (and their properties and values).\nOptionally, sitelinks to pages on the same topic in Wikipedia and other Wikimedia projects."
+ },
+ {
+  "id": "wikidata#199",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Statements\nStatements are how any information known about an item is recorded in Wikidata. Formally, they consist of key–value pairs, which match a property (such as \"author\", or \"publication date\") with one or more entity values (such as \"Sir Arthur Conan Doyle\" or \"1902\"). For example, the informal English statement \"milk is white\" would be encoded by a statement pairing the property color (P462) with the value white (Q23444) under the item milk (Q8495).\nStatements may map a property to more than one value. For example, the \"occupation\" property for Marie Curie could be linked with the values \"physicist\" and \"chemist\", to reflect the fact that she engaged in both occupations.\nValues may take on many types, including other Wikidata items, strings, numbers, or media files. Properties prescribe what types of values they may be paired with. For example, the property official website (P856) may only be paired with values of type \"URL\"."
+ },
+ {
+  "id": "wikidata#200",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Statements\nOptionally, qualifiers can be used to refine the meaning of a statement by providing additional information. For example, a \"population\" statement could be modified with a qualifier such as \"point in time (P585): 2011\" (as its own key-value pair). Values in the statements may also be annotated with references, pointing to a source backing up the statement's content. As with statements, all qualifiers and references are property–value pairs. Each statement also has a rank: normal by default, preferred for the most current value or the one that best represents consensus, or deprecated for a value known to contain errors."
+ },
+ {
+  "id": "wikidata#201",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Properties\nEach property has a numeric identifier prefixed with a capital P and a page on Wikidata with an optional label, description, aliases, and statements. As such, there are properties with the sole purpose of describing other properties, such as subproperty of (P1647).\nProperties may also define more complex rules about their intended usage, termed constraints. For example, the capital (P36) property includes a \"single value constraint\", reflecting the reality that (typically) territories have only one capital city. Constraints are treated as testing alerts and hints, rather than inviolable rules.\nBefore a new property is created, it needs to undergo a discussion process.\nThe most used property is cites work (P2860), which had been used more than 313,000,000 times as of October 2026."
+ },
+ {
+  "id": "wikidata#202",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Lexemes\nIn linguistics, a lexeme is a unit of lexical meaning representing a group of words that share the same core meaning and grammatical characteristics.  Similarly, Wikidata's lexemes are items with a structure that makes them more suitable for storing lexicographical data. Since 2018, Wikidata has supported lexicographical entries in the form of lexemes.\nIn Wikidata, lexicographical entries have a different identifier from regular item entries. These entries are prefixed with the letter L, such as in the example entries for book (L16168) and cow (L3726). Lexicographical entries in Wikidata can contain statements, senses, and forms. The use of lexicographical entries in Wikidata allows for the documentation of word usage, the connection between words and items on Wikidata, word translations, and enables machine-readable lexicographical data."
+ },
+ {
+  "id": "wikidata#203",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Lexemes\nIn 2020, lexicographical entries on Wikidata exceeded 250,000. The language with the most lexicographical entries was Russian, with a total of 101,137 lexemes, followed by English with 38,122 lexemes. Lexemes from 668 languages were recorded. As of October 2026, Wikidata had more than 1.7 million lexemes in 1,568 languages, with about 18 million forms and 945,000 senses."
+ },
+ {
+  "id": "wikidata#204",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Entity schemas\nIn Wikidata, a schema is a data model that outlines the necessary attributes for a data item. For instance, a data item that uses the attribute \"instance of\" with the value \"human\" would typically include attributes such as \"place of birth,\" \"date of birth,\" \"date of death,\" and \"place of death.\" The entity schema in Wikidata utilizes Shape Expression (ShEx) to describe the data in Wikidata items in the form of a Resource Description Framework (RDF). The use of entity schemas in Wikidata helps address data inconsistencies and unchecked vandalism."
+ },
+ {
+  "id": "wikidata#205",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Entity schemas\nIn January 2019, development started of a new extension for MediaWiki to enable storing ShEx in a separate namespace. Entity schemas are stored with different identifiers than those used for items, properties, and lexemes. Entity schemas are stored with an \"E\" identifier, such as E10 for the entity schema of human data instances and E270 for the entity schema of building data instances. The extension was deployed on Wikidata on May 28, 2019 and enables contributors to use ShEx for validating and describing Resource Description Framework data in items and lexemes. Any item or lexeme on Wikidata can be checked against an entity schema to test whether it conforms to the structure the schema describes, and this makes it an important tool for quality assurance. Since July 2024, statements can also link to entity schemas, for example with the property EntitySchema for this class (P12861)."
+ },
+ {
+  "id": "wikidata#206",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Content\nWikidata's content collections include data for biographies, medicine, digital humanities, scholarly metadata through the WikiCite project.\nIt includes data collections from other open projects including Freebase.\nIn 2025, Wikidata held about 116 million items, corresponding to about 16 billion triples."
+ },
+ {
+  "id": "wikidata#207",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Development\nThe creation of the project was funded by donations from the Allen Institute for AI, the Gordon and Betty Moore Foundation, and Google, Inc., totaling €1.3 million. The development of the project is mainly driven by Wikimedia Deutschland under the management of Lydia Pintscher, and was originally split into three phases:\n\nCentralising interlanguage links – links between Wikipedia articles about the same topic in different languages.\nProviding a central place for infobox data for all Wikipedias.\nCreating and updating list articles based on data in Wikidata and linking to other Wikimedia sister projects, including Meta-Wiki and the own Wikidata (interwikilinks)."
+ },
+ {
+  "id": "wikidata#208",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Initial rollout\nWikidata was launched on 29 October 2012 and was the first new project of the Wikimedia Foundation since 2006. At release, only the centralization of language links was available. This enabled items to be created and filled with basic information: a label – a name or title, aliases – alternative terms for the label, a description, and links to articles about the topic in all the various language editions of Wikipedia (interwikipedia links).\nHistorically, a Wikipedia article would include a list of interlanguage links (links to articles on the same topic in other editions of Wikipedia, if they existed). Wikidata was originally a self-contained repository of interlanguage links. Wikipedia language editions were still not able to access Wikidata, so they needed to continue to maintain their own lists of interlanguage links."
+ },
+ {
+  "id": "wikidata#209",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Initial rollout\nOn January 14, 2013, the Hungarian Wikipedia became the first to enable the provision of interlanguage links via Wikidata. This functionality was extended to the Hebrew and Italian Wikipedias on January 30, to the English Wikipedia on February 13, and to all other Wikipedias on 6 March. After no consensus was reached over a proposal to restrict the removal of language links from the English Wikipedia, they were automatically removed by bots. On September 23, 2013, interlanguage links went live on Wikimedia Commons."
+ },
+ {
+  "id": "wikidata#210",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Statements and data access\nOn February 4, 2013, statements were introduced to Wikidata entries. The possible values for properties were initially limited to two data types (items and images on Wikimedia Commons), with more data types (such as coordinates and dates) to follow later. The first new type, string, was deployed on 6 March.\nThe ability for the various language editions of Wikipedia to access data from Wikidata was rolled out progressively between 27 March and April 25, 2013. On September 16, 2015, Wikidata began allowing so-called arbitrary access, or access from a given article of a Wikipedia to the statements on Wikidata items not directly connected to it. For example, it became possible to read data about Germany from the Berlin article, which was not feasible before. On April 27, 2016, arbitrary access was activated on Wikimedia Commons."
+ },
+ {
+  "id": "wikidata#211",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Statements and data access\nAccording to a 2020 study, a large proportion of the data on Wikidata consists of entries imported en masse from other databases by Internet bots, which helps to \"break down the walls\" of data silos."
+ },
+ {
+  "id": "wikidata#212",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Query service and other improvements\nOn September 7, 2015, the Wikimedia Foundation announced the release of the Wikidata Query Service, which lets users run queries on the data contained in Wikidata. The service uses SPARQL as the query language. As of September 2026, at least 41 tools allowed querying the data in different ways. It uses Blazegraph as its triplestore and graph database. Blazegraph has not been maintained since 2018, and the growth of Wikidata strained the service; in May 2025 the graph was split in two, with scholarly articles moved to a separate query service. In June 2026, the Wikimedia Foundation and Wikimedia Deutschland chose QLever to replace Blazegraph, with the aim of moving all query traffic to it by June 30, 2027.\nIn August 2021, Wikimedia Deutschland released the Query Builder, \"a form-based query builder to allow people who don't know how to use SPARQL\" to write a query. A REST API for Wikidata was released in January 2023, and its first stable version went live on November 11, 2024."
+ },
+ {
+  "id": "wikidata#213",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Query service and other improvements\nThe Wikidata Embedding Project was made available in October 2025. It provides a vector-based semantic search tool, allowing plain-language queries, and supports the Model Context Protocol standard that makes the data more readily available to AI systems. The project is a partnership between Wikimedia Deutschland, Jina.AI and DataStax, an IBM subsidiary."
+ },
+ {
+  "id": "wikidata#214",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Logo\nThe bars on the logo contain the word \"WIKI\" encoded in Morse code. It was created by Arun Ganesh and selected through community decision."
+ },
+ {
+  "id": "wikidata#215",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Reception\nIn November 2014, Wikidata received the Open Data Publisher Award from the Open Data Institute \"for sheer scale, and built-in openness\".\nIn December 2014, Google announced that it would shut down Freebase in favor of Wikidata.\nAs of November 2018, Wikidata information was used in 58.4% of all English Wikipedia articles, primarily for external identifiers or coordinates. In aggregate, data from Wikidata is shown in 64% of all Wikipedias' pages, 93% of all Wikivoyage articles, 34% of all Wikiquotes', 32% of all Wikisources', and 27% of Wikimedia Commons. In a 2020 study, Wikimedia Foundation researcher Isaac Johnson cited estimates that 62% of articles across all language editions of Wikipedia transcluded Wikidata content as of August 2020, but found that on the English Wikipedia, transclusion that affected the content of an article occurred in about 5% of articles, rather than the 61% suggested by earlier statistics."
+ },
+ {
+  "id": "wikidata#216",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Reception\nAs of October 2026, Wikidata listed more than 60 external tools for visualizing its data, and by August 2021 over 300 papers had been published about Wikidata.\nIn 2025, Wikidata was recognised as a \"digital public good\" by the Digital Public Goods Alliance. In August 2025, Fast Company described Wikidata as \"the world's largest free knowledge graph\"."
+ },
+ {
+  "id": "wikidata#217",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Applications\nWikidata's structured dataset has been used by virtual assistants such as Apple's Siri and Amazon Alexa.\nOpenRefine, a data-cleaning tool, can reconcile tabular data against Wikidata items through a reconciliation service.\nMwnci extension can import data from Wikidata to LibreOffice Calc spreadsheets\nScholia, a web service that builds profiles of researchers, organizations, journals and topics from the bibliographic data in Wikidata, which it queries through the Wikidata Query Service.\nMathQA – a mathematical question answering system\nKDE Itinerary – a privacy conscious open source travel assistant that uses data from Wikidata\nVerified Handles, a directory of social media accounts, links most of its entries to Wikidata items and adds the accounts listed there.\nGoogle originally started a frame semantic parser project that aimed to parse the information on Wikipedia and transfer it into Wikidata by coming up with relevant statements using artificial intelligence."
+ },
+ {
+  "id": "wikidata#218",
+  "doc_id": "wikidata",
+  "text": "Wikidata — Applications\nA systematic literature review of the uses of Wikidata in research was carried out in 2019."
+ },
+ {
+  "id": "freebase#219",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Introduction\nFreebase was a large collaborative knowledge base consisting of data composed mainly by its community members. It was an online collection of structured data harvested from many sources, including individual, user-submitted wiki contributions. Freebase aimed to create a global resource that allowed people (and machines) to access common information more effectively. It was developed by the American software company Metaweb and run publicly beginning in March 2007. Metaweb was acquired by Google in a private sale announced on 16 July 2010. Google's Knowledge Graph is powered in part by Freebase.\nDuring its existence, Freebase data was available for commercial and non-commercial use under a Creative Commons Attribution License, and an open API, RDF endpoint, and a database dump were provided for programmers.\nOn 16 December 2014, Google announced that it would shut down Freebase over the succeeding six months and help with the move of the data from Freebase to Wikidata."
+ },
+ {
+  "id": "freebase#220",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Introduction\nOn 16 December 2015, Google officially announced the Knowledge Graph API, which is meant to be a replacement to the Freebase API. Freebase.com was officially shut down on 2 May 2016.\nBoth Graphd and MQL, the graph database and JSON-based query language developed by Metaweb for Freebase, are open-sourced by Google under the Apache 2.0 license, and are available on GitHub. Graphd was open-sourced on 8 September 2018. MQL was open-sourced on 4 August 2020."
+ },
+ {
+  "id": "freebase#221",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Overview\nOn 3 March 2007 Metaweb announced Freebase, describing it as \"an open shared database of the world's knowledge\", and \"a massive, collaboratively edited database of cross-linked data\". Often understood as a database model using Wikipedia-turned-database or entity-relationship model, Freebase provided an interface that allowed non-programmers to fill in structured data, or metadata, of general information and to categorize or connect data items in meaningful, semantic ways.\nDescribed by Tim O'Reilly upon the launch, \"Freebase is the bridge between the bottom up vision of Web 2.0 collective intelligence and the more structured world of the semantic web\".\nFreebase contained data harvested from sources such as Wikipedia, NNDB, Fashion Model Directory and MusicBrainz, as well as data contributed by its users. The structured data was licensed under the Creative Commons Attribution License,"
+ },
+ {
+  "id": "freebase#222",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Overview\nand a JSON-based HTTP API is provided to programmers for developing applications on any platform to utilize the Freebase data.  The source code for the Metaweb application itself is proprietary.\nFreebase ran on a database infrastructure created in-house by Metaweb that use a graph model: Instead of using tables and keys to define data structures, Freebase defined its data structure as a set of nodes and a set of links that established relationships between the nodes. Because its data structure was non-hierarchical, Freebase could model much more complex relationships between individual elements than a conventional database, and was open for users to enter new objects and relationships into the underlying graph. Queries to the database are made in Metaweb Query Language (MQL) and served by a triplestore called graphd."
+ },
+ {
+  "id": "freebase#223",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Development\nDanny Hillis first described his idea for creating a knowledge web he called Aristotle in a paper in 2000, but he said he did not try to build the system until he had recruited technical experts. Veda Hlubinka-Cook, an expert in parallel computing, became Metaweb's Executive Vice President for Product. Kurt Bollacker brought deep expertise in distributed systems, database design, and information retrieval to his role as Chief Scientist at Metaweb. John Giannandrea, formerly Chief Technologist at Tellme Networks and Chief Technologist of the Web browser group at Netscape/AOL, was Chief Technology Officer.\nOriginally accessible by invitation only, Freebase opened full anonymous read access to the public in its alpha stage of development and later required registration only for data contributions."
+ },
+ {
+  "id": "freebase#224",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Development\nOn 29 October 2008, at the International Semantic Web Conference, Freebase released its RDF service for generating RDF representations of Freebase topics, allowing Freebase to be used as linked data."
+ },
+ {
+  "id": "freebase#225",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Organization and policy\nFreebase's subjects are called \"topics\", and the data stored about them depended on their \"type\", as to how they were classified. For example, an entry for Arnold Schwarzenegger, the former governor of California, would be entered as a topic that would include a variety of types describing him as an actor, bodybuilder, and politician. As of January 2014, Freebase had approximately 44 million topics and 2.4 billion facts.\nFreebase's types are themselves user-editable. Each type had a number of defined predicates, called \"properties\".\n\n[U]nlike the W3C approach to the semantic web, which starts with controlled ontologies, Metaweb adopts a folksonomy approach, in which people can add new categories (much like tags), in a messy sprawl of potentially overlapping assertions."
+ },
+ {
+  "id": "freebase#226",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Organization and policy\nHowever, Freebase differed from the wiki model in many ways. User-created types were not adopted in the \"public commons\" until promoted by a Metaweb employee. Also, users could not modify each other's types. The reason Freebase could not open up permissions of schemas is that external applications relied on them; thus, changing a type's schema – for instance by deleting a property or changing a simple property – might have broken queries for API users and even within Freebase itself, for example in saved views."
+ },
+ {
+  "id": "freebase#227",
+  "doc_id": "freebase",
+  "text": "Freebase (dataset) — Discontinuation\nOn 16 December 2014, the Freebase team officially announced that the website and the API would be shut down by 30 June 2015.  Google provided an update on 16 December 2015 that they would discontinue the Freebase API and widget three months after a Suggest widget replacement was launched in early 2016."
+ },
+ {
+  "id": "schema_org#228",
+  "doc_id": "schema_org",
+  "text": "Schema.org — Introduction\nSchema.org is a reference website that publishes documentation and guidelines for using structured data mark-up on web-pages (in the form of microdata, RDFa or JSON-LD). Its main objective is to standardize HTML tags to be used by webmasters for creating rich results (displayed as visual data or infographic tables on search engine results) about a certain topic of interest. It is a part of the semantic web project, which aims to make document mark-up codes more readable and meaningful to both humans and machines."
+ },
+ {
+  "id": "schema_org#229",
+  "doc_id": "schema_org",
+  "text": "Schema.org — History\nSchema.org is an initiative launched on June 2, 2011, by Bing, Google and Yahoo! (operators of the world's largest search engines at that time) to create and support a common set of schemas for structured data markup on web pages. In November 2011, Yandex (whose search engine is the largest in Russia) joined the initiative. They propose using the schema.org vocabulary along with the Microdata, RDFa, or JSON-LD formats to mark up website content with metadata about itself. Such markup can be recognized by search engine spiders and other parsers, thus granting access to the meaning of the sites (see Semantic Web). The initiative also describes an extension mechanism for adding additional properties. In 2012, the GoodRelations ontology was integrated into Schema.org. Public discussion of the initiative largely takes place on the W3C public vocabularies mailing list."
+ },
+ {
+  "id": "schema_org#230",
+  "doc_id": "schema_org",
+  "text": "Schema.org — History\nMuch of the vocabulary on Schema.org was inspired by earlier formats, such as microformats, FOAF, and OpenCyc. Microformats, with its most dominant representative hCard, continue (as of 2015) to be published widely on the web, where the deployment of Schema.org has strongly increased between 2012 and 2014. In 2015, Google began supporting the JSON-LD format, and as of September, 2017 recommended using JSON-LD for structured data whenever possible.\nDespite the advantages of using Schema.org, adoption remained limited as of 2016. A survey in 2016 of 300 US-based marketing agencies and B2C advertisers across\nindustries showing only 17% uptake. As of 2024 over 45 million web domains have used schema markup on their web pages."
+ },
+ {
+  "id": "schema_org#231",
+  "doc_id": "schema_org",
+  "text": "Schema.org — History\nindustries showing only 17% uptake. As of 2024 over 45 million web domains have used schema markup on their web pages.\nValidators, such as the deprecated Google Structured Data Testing Tool, or more recent Google Rich Results Test Tool, Schema.org Markup Validator, Yandex Microformat validator, and Bing Markup Validator can be used to test the validity of the data marked up with the schemas and Microdata. More recently, Google Search Console (formerly webmaster tools) has provided a report section for unparsable structured data. If any Schema code on a website is incorrect, it will show in this report. Some schema markups such as Organization and Person are commonly used to influence search results returned by Google's Knowledge Graph.\nThe popularity of Schema.org has served for its use as a base for other schemas, such as the Croissant specification for machine-learning datasets."
+ },
+ {
+  "id": "schema_org#232",
+  "doc_id": "schema_org",
+  "text": "Schema.org — Schema types\nSchema vocabulary includes sets of types, each of which have related metadata properties that can be illustrated using predefined enumerations and Datatypes. Types are managed by schema.org and are regularly updated. As of June 2026, there are over 823 schema types. There are a number of subjects and elements that a web page can be marked up with using a Schema, with examples including:\n\nArticle\nBreadcrumb\nCourse\nEvent\nFAQ\nLocalBusiness\nLogo\nMovie\nProduct\nRecipe\nReview\nVideo\nBook\nClip\nContactpoint\nHowTo\nOffer"
+ },
+ {
+  "id": "schema_org#233",
+  "doc_id": "schema_org",
+  "text": "Schema.org — Microdata\nThe following is an example of how to mark up information about a movie and its director using the Schema.org schemas and microdata. In order to mark up the data, the attribute itemtype along with the URL of the schema is used. The attribute itemscope defines the scope of the itemtype. The kind of the current item can be defined by using the attribute itemprop."
+ },
+ {
+  "id": "schema_org#234",
+  "doc_id": "schema_org",
+  "text": "Schema.org — Schema.org Usage Statistics\nIn June 2026, the Google and Schema.org community announced schema.org usage statistics for the first time. It was published publicly in the official Schema.org GitHub repository in CSV and JSON formats. Schema.org invited other crawlers and indexers to contribute their own statistics to this initiative using the same open format.\nThis dataset is updated monthly and shows Schema.org term usage across millions of domains. To respect privacy, the counts are aggregated at the domain level and presented in popularity-range buckets."
+ },
+ {
+  "id": "knowledge_graph#235",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Introduction\nIn knowledge representation and reasoning, a knowledge graph is a knowledge base that uses a graph-structured data model or topology to represent and operate on data. Knowledge graphs are often used to store interlinked descriptions of entities –  objects, events, situations or abstract concepts –  while also encoding the free-form semantics or relationships underlying these entities.\nSince the development of the Semantic Web, knowledge graphs have often been associated with linked open data projects, focusing on the connections between concepts and entities. They are also historically associated with and used by search engines such as Google, Bing, and Yahoo; knowledge engines and question-answering services such as WolframAlpha, Apple's Siri, and Amazon Alexa; and social networks such as LinkedIn and Facebook."
+ },
+ {
+  "id": "knowledge_graph#236",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Introduction\nRecent developments in data science and machine learning, particularly in graph neural networks, representation learning, and machine learning, have broadened the scope of knowledge graphs beyond their traditional use in search engines and recommender systems. They are increasingly used in scientific research, with notable applications in fields such as genomics, proteomics, and systems biology."
+ },
+ {
+  "id": "knowledge_graph#237",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — History\nIn December 1968, the Human Resources Research Organization (HumRRO) delivered a presentation for the Society for General Systems Research's Annual Meeting in which they described the \"Subject-Matter Map,\" and formalized the idea of representing knowledge as a graph. In 1972, the Austrian linguist Edgar W. Schneider cited HumRRO's presentation in his discussion of how to build modular instructional systems for courses, and coined the term \"Knowledge Graph.\" In the late 1980s, the University of Groningen and University of Twente jointly began a project called Knowledge Graphs, focusing on the design of semantic networks with edges restricted to a limited set of relations, to facilitate algebras on the graph. In subsequent decades, the distinction between semantic networks and knowledge graphs was blurred."
+ },
+ {
+  "id": "knowledge_graph#238",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — History\nSome early knowledge graphs were topic-specific. In 1985, Wordnet was founded, capturing semantic relationships between words and meanings – an application of this idea to language itself. In 2005, Marc Wirk founded Geonames to capture relationships between different geographic names and locales and associated entities. In 1998, Andrew Edmonds of Science in Finance Ltd in the UK created a system called ThinkBase that offered fuzzy-logic based reasoning in a graphical context.\nIn 2007, both DBpedia and Freebase were founded as graph-based knowledge repositories for general-purpose knowledge. DBpedia focused exclusively on data extracted from Wikipedia, while Freebase also included a range of public datasets. Neither described themselves as a 'knowledge graph' but developed and described related concepts."
+ },
+ {
+  "id": "knowledge_graph#239",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — History\nIn 2012, Google introduced their Knowledge Graph, building on DBpedia and Freebase among other sources. They later incorporated RDFa, Microdata, JSON-LD content extracted from indexed web pages, including the CIA World Factbook, Wikidata, and Wikipedia. Entity and relationship types associated with this knowledge graph have been further organized using terms from the schema.org vocabulary. The Google Knowledge Graph became a complement to string-based search within Google, and its popularity online brought the term into more common use.\nSince then, several large multinationals have advertised their use of knowledge graphs, further popularising the term. These include Facebook, LinkedIn, Airbnb, Microsoft, Amazon, Uber and eBay.\nIn 2019, IEEE combined its annual international conferences on \"Big Knowledge\" and \"Data Mining and Intelligent Computing\" into the International Conference on Knowledge Graph."
+ },
+ {
+  "id": "knowledge_graph#240",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — History\nThe development of large language models expanded interest in knowledge graphs as a way to structure information from unstructured text, with advances in language processing enabling their automatic or semi-automatic generation and expansion. The term knowledge graph has since broadened to include the dynamically constructed and adaptive graph structures, which support retrieval, reasoning, and summarization in generative systems. Microsoft Research's GraphRAG (2024) exemplified this development by integrating LLM-generated graphs into retrieval-augmented generation."
+ },
+ {
+  "id": "knowledge_graph#241",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Definitions\nThere is no single commonly accepted definition of a knowledge graph. Most definitions view the topic through a Semantic Web lens and include these features:"
+ },
+ {
+  "id": "knowledge_graph#242",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Definitions\nFlexible relations among knowledge in topical domains: A knowledge graph (i) defines abstract classes and relations of entities in a schema, (ii) mainly describes real world entities and their interrelations, organized in a graph, (iii) allows for potentially interrelating arbitrary entities with each other, and (iv) covers various topical domains.\nGeneral structure: A network of entities, their semantic types, properties, and relationships. To represent properties, categorical or numerical values are often used.\nSupporting reasoning over inferred ontologies: A knowledge graph acquires and integrates information into an ontology and applies a reasoner to derive new knowledge.\nThere are, however, many knowledge graph representations for which some of these features are not relevant.  For those knowledge graphs, this simpler definition may be more useful:"
+ },
+ {
+  "id": "knowledge_graph#243",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Definitions\nA digital structure that represents knowledge as concepts and the relationships between them (facts). A knowledge graph can include an ontology that allows both humans and machines to understand and reason about its contents."
+ },
+ {
+  "id": "knowledge_graph#244",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Implementations\nIn addition to the above examples, the term has been used to describe open knowledge projects such as YAGO and Wikidata; federations like the Linked Open Data cloud; a range of commercial search tools, including Yahoo's semantic search assistant Spark, Google's Knowledge Graph, and Microsoft's Satori; and the LinkedIn and Facebook entity graphs.\nThe term is also used in the context of note-taking software applications that allow a user to build a personal knowledge graph.\nThe popularization of knowledge graphs and their accompanying methods have led to the development of graph databases. These graph databases allow users to easily store data as entities and their interrelationships, and facilitate operations such as data reasoning, node embedding, and ontology development on knowledge bases."
+ },
+ {
+  "id": "knowledge_graph#245",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Implementations\nIn contrast, virtual knowledge graphs do not store information in specialized databases. They rely on an underlying relational database or data lake to answer queries on the graph. Such a virtual knowledge graph system must be properly configured in order to answer the queries correctly. This specific configuration is done through a set of mappings that define the relationship between the elements of the data source and the structure and ontology of the virtual knowledge graph."
+ },
+ {
+  "id": "knowledge_graph#246",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Using a knowledge graph for reasoning over data\nA knowledge graph formally represents semantics by describing entities and their relationships. Knowledge graphs may make use of ontologies as a schema layer. By doing this, they allow logical inference for retrieving implicit knowledge rather than only allowing queries requesting explicit knowledge.\nIn order to allow the use of knowledge graphs in various machine learning tasks, several methods for deriving latent feature representations of entities and relations have been devised. These knowledge graph embeddings allow them to be connected to machine learning methods that require feature vectors like word embeddings. This can complement other estimates of conceptual similarity."
+ },
+ {
+  "id": "knowledge_graph#247",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Using a knowledge graph for reasoning over data\nModels for generating useful knowledge graph embeddings are commonly the domain of graph neural networks (GNNs). GNNs are deep learning architectures that comprise edges and nodes, which correspond well to the entities and relationships of knowledge graphs. The topology and data structures afforded by GNNs provide a convenient domain for semi-supervised learning, wherein the network is trained to predict the value of a node embedding (provided a group of adjacent nodes and their edges) or edge (provided a pair of nodes). These tasks serve as fundamental abstractions for more complex tasks such as knowledge graph reasoning and alignment."
+ },
+ {
+  "id": "knowledge_graph#248",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Entity alignment\nAs new knowledge graphs are produced across a variety of fields and contexts, the same entity will inevitably be represented in multiple graphs. However, because no single standard for the construction or representation of knowledge graph exists, resolving which entities from disparate graphs correspond to the same real world subject is a non-trivial task. This task is known as knowledge graph entity alignment, and is an active area of research.\nStrategies for entity alignment generally seek to identify similar substructures, semantic relationships, shared attributes, or combinations of all three between two distinct knowledge graphs. Entity alignment methods use these structural similarities between generally non-isomorphic graphs to predict which nodes correspond to the same entity."
+ },
+ {
+  "id": "knowledge_graph#249",
+  "doc_id": "knowledge_graph",
+  "text": "Knowledge graph — Entity alignment\nIn 2023, researchers found success in using large language models (LLMs) in the task of entity alignment. This was in particular thanks to their effectiveness at producing syntactically meaningful embeddings.\nAs the amount of data stored in knowledge graphs grows, developing dependable methods for knowledge graph entity alignment becomes an increasingly crucial step in the integration and cohesion of knowledge graph data."
+ },
+ {
+  "id": "yago#250",
+  "doc_id": "yago",
+  "text": "YAGO (database) — Introduction\nYAGO (Yet Another Great Ontology) is an open source knowledge base developed at the Max Planck Institute for Informatics in Saarbrücken. It is automatically extracted from Wikidata and Schema.org.\nYAGO4, which was released in 2020, combines data that was extracted from Wikidata with relationship designators from Schema.org. The previous version of YAGO, YAGO3, had knowledge of more than 10 million entities and contained more than 120 million facts about these entities. The information in YAGO3 was extracted from Wikipedia (e.g., categories, redirects, infoboxes), WordNet (e.g., synsets, hyponymy), and GeoNames. \nThe accuracy of YAGO was manually evaluated to be above 95% on a sample of facts. To integrate it to the linked data cloud, YAGO has been linked to the DBpedia ontology and to the SUMO ontology."
+ },
+ {
+  "id": "yago#251",
+  "doc_id": "yago",
+  "text": "YAGO (database) — Introduction\nYAGO3 is provided in Turtle and tsv formats. Dumps of the whole database are available, as well as thematic and specialized dumps. It can also be queried through various online browsers and through a SPARQL endpoint hosted by OpenLink Software. The source code of YAGO3 is available on GitHub.\nYAGO has been used in the Watson artificial intelligence system."
+ },
+ {
+  "id": "cyc#252",
+  "doc_id": "cyc",
+  "text": "Cyc — Introduction\nCyc (pronounced  SYKE) is a long-term artificial intelligence (AI) project that aims to assemble a comprehensive ontology and knowledge base that spans the basic concepts and rules about how the world works. Hoping to capture common sense knowledge, Cyc focuses on implicit knowledge. The project began in July 1984 at MCC and was developed later by the Cycorp company.\nThe name \"Cyc\" (from \"encyclopedia\") is a registered trademark owned by Cycorp. CycL has a publicly released specification, and dozens of HL (Heuristic Level) modules were described in Lenat and Guha's textbook, but the Cyc inference engine code and the full list of HL modules are Cycorp-proprietary."
+ },
+ {
+  "id": "cyc#253",
+  "doc_id": "cyc",
+  "text": "Cyc — History\nThe project was begun in July 1984 by Douglas Lenat at the Microelectronics and Computer Technology Corporation (MCC), a research consortium started by two United States–based corporations \"to counter a then ominous Japanese effort in AI, the so-called 'fifth-generation' project.\" From January 1995 on, the project was under active development by Cycorp, where Douglas Lenat was the CEO.\nThe CycL representation language started as an extension of RLL (the Representation Language Language, developed in 1979–1980 by Lenat and his graduate student Russell Greiner while at Stanford University). In 1989, CycL had expanded in expressive power to higher-order logic (HOL).\nCyc's ontology grew to about 100,000 terms in 1994, and as of 2017, it contained about 1,500,000 terms. The Cyc knowledge base involving ontological terms was largely created by hand axiom-writing; it was at about 1 million in 1994, and as of 2017, it was at about 24.5 million."
+ },
+ {
+  "id": "cyc#254",
+  "doc_id": "cyc",
+  "text": "Cyc — History\nBy 2002, Cyc was described as having \"consumed $60 million and 600 person-years of effort from programmers, philosophers and others—collectively known as Cyclists—who have been codifying what Lenat calls 'consensus reality' and entering it into a massive database.\"\nIn 2008, Cyc resources were mapped to many Wikipedia articles.\nIn 2014, Lenat said \"We've been keeping a very low profile, mostly intentionally\", with no outside investments and no debt."
+ },
+ {
+  "id": "cyc#255",
+  "doc_id": "cyc",
+  "text": "Cyc — Knowledge base\nThe knowledge base is divided into microtheories. Unlike the knowledge base as a whole, each microtheory must be free from monotonic contradictions. Each microtheory is a first-class object in the Cyc ontology; it has a name that is a regular constant. The concept names in Cyc are CycL terms or constants. Constants start with an optional #$ and are case-sensitive. There are constants for:"
+ },
+ {
+  "id": "cyc#256",
+  "doc_id": "cyc",
+  "text": "Cyc — Knowledge base\nIndividual items known as individuals, such as #$BillClinton or #$France.\nCollections, such as #$Tree-ThePlant (containing all trees) or #$EquivalenceRelation (containing all equivalence relations). A member of a collection is called an instance of that collection.\nFunctions, which produce new terms from given ones. For example, #$FruitFn, when provided with an argument describing a type (or collection) of plants, will return the collection of its fruits. By convention, function constants start with an upper-case letter and end with the string Fn.\nTruth functions, which can apply to one or more other concepts and return either true or false. For example, #$siblings is the sibling relationship, true if the two arguments are siblings. By convention, truth function constants start with a lowercase letter."
+ },
+ {
+  "id": "cyc#257",
+  "doc_id": "cyc",
+  "text": "Cyc — Knowledge base\nFor every instance of the collection #$ChordataPhylum (i.e., for every chordate), there exists a female animal (instance of #$FemaleAnimal), which is its mother (described by the predicate #$biologicalMother)."
+ },
+ {
+  "id": "cyc#258",
+  "doc_id": "cyc",
+  "text": "Cyc — Inference engine\nAn inference engine is a computer program that tries to derive answers from a knowledge base. The Cyc inference engine performs general logical deduction. It also performs inductive reasoning, statistical machine learning and symbolic machine learning, and abductive reasoning.\nThe Cyc inference engine separates the epistemological problem from the heuristic problem. For the latter, Cyc used a community-of-agents architecture in which specialized modules, each with its own algorithm, became prioritized if they could make progress on the sub-problem."
+ },
+ {
+  "id": "cyc#259",
+  "doc_id": "cyc",
+  "text": "Cyc — OpenCyc\nThe first version of OpenCyc was released in spring 2002 and contained only 6,000 concepts and 60,000 facts. The knowledge base was released under the Apache License. Cycorp stated its intention to release OpenCyc under parallel, unrestricted licences to meet the needs of its users. The CycL and SubL interpreter (the program that allows users to browse and edit the database as well as to draw inferences) was released free of charge, but only as a binary, without source code. It was made available for Linux and Microsoft Windows. The open source Texai project released the RDF-compatible content extracted from OpenCyc. The user interface was in Java 6.\nCycorp was a participant of a working group for the Semantic Web, Standard Upper Ontology Working Group, which was active from 2001 to 2003.\nA Semantic Web version of OpenCyc was available starting in 2008, but ending sometime after 2016."
+ },
+ {
+  "id": "cyc#260",
+  "doc_id": "cyc",
+  "text": "Cyc — OpenCyc\nA Semantic Web version of OpenCyc was available starting in 2008, but ending sometime after 2016.\nOpenCyc 4.0 was released in June 2012. OpenCyc 4.0 contained 239,000 concepts and 2,093,000 facts; however, these are mainly taxonomic assertions.\n4.0 was the last released version, and around March 2017, OpenCyc was shut down for the purported reason that \"because such “fragmenting” led to divergence, and led to confusion amongst its users and the technical community generally thought that OpenCyc fragment was Cyc.\"."
+ },
+ {
+  "id": "cyc#261",
+  "doc_id": "cyc",
+  "text": "Cyc — ResearchCyc\nIn July 2006, Cycorp released the executable of ResearchCyc 1.0, a version of Cyc aimed at the research community, at no charge. (ResearchCyc was in beta stage of development during all of 2004; a beta version was released in February 2005.) In addition to the taxonomic information, ResearchCyc includes more semantic knowledge; it also includes a large lexicon, English parsing and generation tools, and Java-based interfaces for knowledge editing and querying. It contains a system for ontology-based data integration."
+ },
+ {
+  "id": "cyc#262",
+  "doc_id": "cyc",
+  "text": "Cyc — Applications\nIn 2001, GlaxoSmithKline was funding the Cyc, though for unknown applications. In 2007, the Cleveland Clinic has used Cyc to develop a natural-language query interface of biomedical information on cardiothoracic surgeries. A query is parsed into a set of CycL fragments with open variables. The Terrorism Knowledge Base was an application of Cyc that tried to contain knowledge about \"terrorist\"-related descriptions. The knowledge is stored as statements in mathematical logic. The project lasted from 2004 to 2008. Lycos used Cyc for search term disambiguation, but stopped in 2001. CycSecure was produced in 2002, a network vulnerability assessment tool based on Cyc, with trials at the US STRATCOM Computer Emergency Response Team."
+ },
+ {
+  "id": "cyc#263",
+  "doc_id": "cyc",
+  "text": "Cyc — Applications\nOne Cyc application has the stated aim to help students doing math at a 6th grade level. The application, called MathCraft, was supposed to play the role of a fellow student who is slightly more confused than the user about the subject. As the user gives good advice, Cyc allows the avatar to make fewer mistakes."
+ },
+ {
+  "id": "cyc#264",
+  "doc_id": "cyc",
+  "text": "Cyc — Criticisms\nThe Cyc project has been described as \"one of the most controversial endeavors of the artificial intelligence history\". Catherine Havasi, CEO of Luminoso, says that Cyc is the predecessor project to IBM's Watson. Machine-learning scientist Pedro Domingos refers to the project as a \"catastrophic failure\" for the unending amount of data required to produce any viable results and the inability for Cyc to evolve on its own.\nGary Marcus, a cognitive scientist and the cofounder of an AI company called Geometric Intelligence, said in 2016 that \"it represents an approach that is very different from all the deep-learning stuff that has been in the news.\" This is consistent with Doug Lenat's position that \"Sometimes the veneer of intelligence is not enough\"."
+ },
+ {
+  "id": "cyc#265",
+  "doc_id": "cyc",
+  "text": "Cyc — Notable employees\nThis is a list of some of the notable people who work or have worked on Cyc either while it was a project at MCC (where Cyc was first started) or Cycorp."
+ }
+]

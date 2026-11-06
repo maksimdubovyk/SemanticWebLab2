@@ -1,0 +1,11 @@
+google-genai
+pydantic
+python-dotenv
+numpy
+scikit-learn
+langchain-text-splitters
+networkx
+python-louvain
+matplotlib
+pyvis
+requests

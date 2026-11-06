@@ -1,0 +1,70 @@
+In computing, linked data is structured data which is associated with ("linked" to) other data. Interlinking makes the data more useful through semantic queries. 
+Tim Berners-Lee, director of the World Wide Web Consortium (W3C), coined the term in a 2006 design note about the Semantic Web project.
+Part of the vision of linked data is for the Internet to become a global database.
+Linked data builds upon standard Web technologies such as HTTP, RDF and URIs, but rather than using them to serve web pages and hyperlinks only for human readers, it extends them to share information in a way that can be read automatically by computers (machine readable).
+Linked data may also be open data, in which case it is usually described as Linked Open Data.
+
+== Principles ==
+In his 2006 "Linked Data" note, Tim Berners-Lee outlined four principles of linked data, paraphrased along the following lines:
+
+Uniform Resource Identifiers (URIs) should be used to name and identify individual things.
+HTTP URIs should be used to allow these things to be looked up, interpreted, and subsequently "dereferenced".
+Useful information about what a name identifies should be provided through open standards such as RDF, SPARQL, etc.
+When publishing data on the Web, other things should be referred to using their HTTP URI-based names.
+Tim Berners-Lee later restated these principles at a 2009 TED conference, again paraphrased along the following lines:
+
+All conceptual things should have a name starting with HTTP.
+Looking up an HTTP name should return useful data about the thing in question in a standard format.
+Anything else that that same thing has a relationship with through its data should also be given a name beginning with HTTP.
+
+== Components ==
+Thus, we can identify the following components as essential to a global Linked Data system as envisioned, and to any actual Linked Data subset within it:
+
+URIs
+HTTP
+Structured data using controlled vocabulary terms and dataset definitions expressed in Resource Description Framework serialization formats such as RDFa, RDF/XML, N3, Turtle, or JSON-LD
+Linked Data Platform
+CSV-W
+
+== Linked open data ==
+Linked open data are linked data that are open data. Tim Berners-Lee gives the clearest definition of linked open data as differentiated from linked data.
+
+ Linked Open Data (LOD) is Linked Data which is released under an open license, which does not impede its reuse for free.
+Large linked open data sets include DBpedia, Wikibase, Wikidata and Open ICEcat.
+
+=== 5-star linked open data ===
+
+In 2010, Tim Berners-Lee suggested a 5-star scheme for grading the quality of open data on the web, for which the highest ranking is Linked Open Data:
+
+1 star: data is openly available in some format.
+2 stars: data is available in a structured format, such as Microsoft Excel file format (.xls).
+3 stars: data is available in a non-proprietary structured format, such as Comma-separated values (.csv).
+4 stars: data follows W3C standards, like using RDF and employing URIs.
+5 stars: all of the others, plus links to other Linked Open Data sources.
+
+=== History ===
+The term "linked open data" has been in use since at least February 2007, when the "Linking Open Data" mailing list was created. The mailing list was initially hosted by the SIMILE project at the Massachusetts Institute of Technology.
+
+=== Linking Open Data community project ===
+
+The goal of the W3C Semantic Web Education and Outreach group's Linking Open Data community project is to extend the Web with a data commons by publishing various open datasets as RDF on the Web and by setting RDF links between data items from different data sources. In October 2007, datasets consisted of over two billion RDF triples, which were interlinked by over two million RDF links.  By September 2011 this had grown to 31 billion RDF triples, interlinked by around 504 million RDF links.  A detailed statistical breakdown was published in 2014.
+
+=== European Union projects ===
+There are a number of European Union projects involving linked data. These include the linked open data around the clock (LATC) project, the AKN4EU project for machine-readable legislative data, the PlanetData project, the DaPaaS (Data-and-Platform-as-a-Service) project, and the Linked Open Data 2 (LOD2) project. Data linking is one of the main goals of the EU Open Data Portal, which makes available thousands of datasets for anyone to reuse and link.
+
+=== Ontologies ===
+Ontologies are formal descriptions of data structures. Some of the better known ontologies are:
+
+FOAF – an ontology describing persons, their properties and relationships
+UMBEL – a lightweight reference structure of 20,000 subject concept classes and their relationships derived from OpenCyc, which can act as binding classes to external data; also has links to 1.5 million named entities from DBpedia and YAGO
+
+=== Datasets ===
+DBpedia – a dataset containing extracted data from Wikipedia; it contains about 3.4 million concepts described by 1 billion triples, including abstracts in 11 different languages
+GeoNames – provides RDF descriptions of more than 7,500,000 geographical features worldwide
+Wikidata – a collaboratively-created linked dataset that acts as central storage for the structured data of its Wikimedia Foundation sibling projects
+Global Research Identifier Database (GRID) – an international database of 89,506 institutions engaged in academic research, with 14,401 relationships. GRID models two types of relationships: a parent-child relationship that defines a subordinate association, and a related relationship that describes other associations
+KnowWhereGraph – an integrated 12 billion triples strong knowledge graph of 30 data layers at the intersection between humans and their environment using Semantic Web and Linked Data technologies.
+Open ICEcat - a multilingual open catalogue containing product datasheets, related digital assets and usage statistics.
+
+=== Dataset instance and class relationships ===
+Clickable diagrams that show the individual datasets and their relationships within the DBpedia-spawned LOD cloud (as by the figures to the right) are available.

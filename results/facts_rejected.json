@@ -1,0 +1,233 @@
+[
+  {
+    "doc_id": "semantic_web",
+    "subject": "SPARQL",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "These technologies are specified as W3C standards and include: [...] SPARQL, an RDF query language",
+    "reason": "not_verbatim"
+  },
+  {
+    "doc_id": "semantic_web",
+    "subject": "Web Ontology Language",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "These technologies are specified as W3C standards and include: [...] Web Ontology Language (OWL), a family of knowledge representation languages",
+    "reason": "not_verbatim"
+  },
+  {
+    "doc_id": "semantic_web",
+    "subject": "Rule Interchange Format",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "These technologies are specified as W3C standards and include: [...] Rule Interchange Format (RIF), a framework of web rule language dialects supporting rule interchange on the Web",
+    "reason": "not_verbatim"
+  },
+  {
+    "doc_id": "semantic_web",
+    "subject": "ActivityPub",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "These technologies are specified as W3C standards and include: [...] ActivityPub, a generic way for client and server to communicate with each other.",
+    "reason": "not_verbatim"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "Wikidata",
+    "subject_type": "KnowledgeBase",
+    "relation": "AFFILIATED_WITH",
+    "object": "Wikimedia Foundation",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "Wikidata – Collaboratively edited knowledge base hosted by the Wikimedia Foundation.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "Creative Commons",
+    "subject_type": "Organization",
+    "relation": "BUILT_ON",
+    "object": "Resource Description Framework",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "Creative Commons – Uses RDF to embed license information in web pages and mp3 files.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "Haystack client",
+    "subject_type": "Technology",
+    "relation": "AFFILIATED_WITH",
+    "object": "MIT CS & AI lab",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "Haystack client – Semantic web browser from MIT CS & AI lab.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "IDEAS Group",
+    "subject_type": "Organization",
+    "relation": "BUILT_ON",
+    "object": "Resource Description Framework",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "IDEAS Group – developing a formal 4D ontology for Enterprise Architecture using RDF as the encoding.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "NEPOMUK",
+    "subject_type": "Technology",
+    "relation": "AFFILIATED_WITH",
+    "object": "KDE SC 4",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "NEPOMUK is mostly known because of its integration into the KDE SC 4 desktop environment.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "rdf",
+    "subject": "Cochrane",
+    "subject_type": "Organization",
+    "relation": "BUILT_ON",
+    "object": "Resource Description Framework",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "They use an ontology driven data architecture to semantically annotate their published reviews with RDF based structured data.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "owl",
+    "subject": "Web-Ontology Working Group",
+    "subject_type": "Organization",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "The World Wide Web Consortium (W3C) created the Web-Ontology Working Group as part of their Semantic Web Activity.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "owl",
+    "subject": "OWL Working Group",
+    "subject_type": "Organization",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": 2007,
+    "evidence": "The W3C chartered the OWL Working Group as part of the Semantic Web Activity in September 2007.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "sparql",
+    "subject": "Eclipse RDF4J",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "SPARQL",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "Open source, reference SPARQL implementations",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "sparql",
+    "subject": "Apache Jena",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "SPARQL",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "Open source, reference SPARQL implementations",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "sparql",
+    "subject": "OpenLink Virtuoso",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "SPARQL",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "Open source, reference SPARQL implementations",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "w3c",
+    "subject": "W3C WebFonts Working Group",
+    "subject_type": "Organization",
+    "relation": "STANDARDIZED_BY",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": 2022,
+    "evidence": "In 2022 the W3C WebFonts Working Group won an Emmy Award from the National Academy of Television Arts and Sciences for standardizing font technology for custom downloadable fonts and typography for web and TV devices.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "w3c",
+    "subject": "Electronic Frontier Foundation",
+    "subject_type": "Organization",
+    "relation": "AFFILIATED_WITH",
+    "object": "World Wide Web Consortium",
+    "object_type": "Organization",
+    "year": 2017,
+    "evidence": "On 18 September 2017, the W3C published the EME specification as a recommendation, leading to the Electronic Frontier Foundation's resignation from W3C.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "wikidata",
+    "subject": "Wikidata",
+    "subject_type": "KnowledgeBase",
+    "relation": "AFFILIATED_WITH",
+    "object": "Wikimedia Foundation",
+    "object_type": "Organization",
+    "year": null,
+    "evidence": "Wikidata is a collaboratively edited multilingual knowledge graph hosted by the Wikimedia Foundation.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "wikidata",
+    "subject": "Wikidata",
+    "subject_type": "KnowledgeBase",
+    "relation": "AFFILIATED_WITH",
+    "object": "Wikimedia Deutschland",
+    "object_type": "Organization",
+    "year": 2012,
+    "evidence": "Launched in October 2012, it is developed mainly by Wikimedia Deutschland and supplies the interlanguage links and some of the infobox data used by Wikipedia and other Wikimedia projects.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "wikidata",
+    "subject": "Wikidata Query Service",
+    "subject_type": "Technology",
+    "relation": "STANDARDIZED_BY",
+    "object": "SPARQL",
+    "object_type": "Technology",
+    "year": null,
+    "evidence": "The service uses SPARQL as the query language.",
+    "reason": "type_mismatch"
+  },
+  {
+    "doc_id": "schema_org",
+    "subject": "Yandex",
+    "subject_type": "Organization",
+    "relation": "AFFILIATED_WITH",
+    "object": "Schema.org",
+    "object_type": "Technology",
+    "year": 2011,
+    "evidence": "In November 2011, Yandex (whose search engine is the largest in Russia) joined the initiative.",
+    "reason": "type_mismatch"
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "expected_winner": "semantic",
+    "query": "search giant bought the startup behind a community-built fact database",
+    "relevant_doc": "freebase",
+    "relevant_text": "Metaweb",
+    "ranks": {
+      "substring": null,
+      "tfidf": null,
+      "semantic": 1
+    }
+  },
+  {
+    "expected_winner": "semantic",
+    "query": "machines that grasp what ordinary people take for granted",
+    "relevant_doc": "cyc",
+    "relevant_text": "common sense",
+    "ranks": {
+      "substring": null,
+      "tfidf": null,
+      "semantic": 2
+    }
+  },
+  {
+    "expected_winner": "semantic",
+    "query": "body that sets the technical rules everyone follows when building websites",
+    "relevant_doc": "w3c",
+    "relevant_text": "standards",
+    "ranks": {
+      "substring": null,
+      "tfidf": null,
+      "semantic": 1
+    }
+  },
+  {
+    "expected_winner": "keyword",
+    "query": "Q42775",
+    "relevant_doc": "wikidata",
+    "relevant_text": "Q42775",
+    "ranks": {
+      "substring": 1,
+      "tfidf": 1,
+      "semantic": 5
+    }
+  },
+  {
+    "expected_winner": "keyword",
+    "query": "Georgi Kobilarov",
+    "relevant_doc": "dbpedia",
+    "relevant_text": "Kobilarov",
+    "ranks": {
+      "substring": 1,
+      "tfidf": 1,
+      "semantic": 1
+    }
+  },
+  {
+    "expected_winner": "keyword",
+    "query": "Q1731",
+    "relevant_doc": "semantic_web",
+    "relevant_text": "Q1731",
+    "ranks": {
+      "substring": 1,
+      "tfidf": 1,
+      "semantic": 2
+    }
+  },
+  {
+    "expected_winner": "keyword",
+    "query": "2,093,000",
+    "relevant_doc": "cyc",
+    "relevant_text": "2,093,000",
+    "ranks": {
+      "substring": 1,
+      "tfidf": 1,
+      "semantic": 5
+    }
+  }
+]

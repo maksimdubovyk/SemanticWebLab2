@@ -1,0 +1,128 @@
+[
+  {
+    "id": "semantic_web",
+    "title": "Semantic Web",
+    "url": "https://en.wikipedia.org/wiki/Semantic_Web",
+    "revision_id": 1382621840,
+    "revision_time": "2026-10-29T14:27:27Z",
+    "words": 4457,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "linked_data",
+    "title": "Linked data",
+    "url": "https://en.wikipedia.org/wiki/Linked_data",
+    "revision_id": 1380968187,
+    "revision_time": "2026-10-19T03:35:56Z",
+    "words": 964,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "rdf",
+    "title": "Resource Description Framework",
+    "url": "https://en.wikipedia.org/wiki/Resource_Description_Framework",
+    "revision_id": 1382675443,
+    "revision_time": "2026-10-29T19:11:43Z",
+    "words": 3524,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "owl",
+    "title": "Web Ontology Language",
+    "url": "https://en.wikipedia.org/wiki/Web_Ontology_Language",
+    "revision_id": 1368952787,
+    "revision_time": "2026-08-12T01:42:12Z",
+    "words": 2639,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "sparql",
+    "title": "SPARQL",
+    "url": "https://en.wikipedia.org/wiki/SPARQL",
+    "revision_id": 1363761927,
+    "revision_time": "2026-07-12T07:08:29Z",
+    "words": 1514,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "berners_lee",
+    "title": "Tim Berners-Lee",
+    "url": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+    "revision_id": 1382155920,
+    "revision_time": "2026-10-26T23:42:49Z",
+    "words": 2616,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "w3c",
+    "title": "World Wide Web Consortium",
+    "url": "https://en.wikipedia.org/wiki/World_Wide_Web_Consortium",
+    "revision_id": 1381048692,
+    "revision_time": "2026-10-19T18:02:16Z",
+    "words": 1514,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "dbpedia",
+    "title": "DBpedia",
+    "url": "https://en.wikipedia.org/wiki/DBpedia",
+    "revision_id": 1381194386,
+    "revision_time": "2026-10-20T16:18:37Z",
+    "words": 1216,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "wikidata",
+    "title": "Wikidata",
+    "url": "https://en.wikipedia.org/wiki/Wikidata",
+    "revision_id": 1381929732,
+    "revision_time": "2026-10-25T17:50:45Z",
+    "words": 2267,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "freebase",
+    "title": "Freebase (dataset)",
+    "url": "https://en.wikipedia.org/wiki/Freebase_(dataset)",
+    "revision_id": 1379680844,
+    "revision_time": "2026-10-11T08:14:05Z",
+    "words": 906,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "schema_org",
+    "title": "Schema.org",
+    "url": "https://en.wikipedia.org/wiki/Schema.org",
+    "revision_id": 1358880200,
+    "revision_time": "2026-06-11T15:37:39Z",
+    "words": 707,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "knowledge_graph",
+    "title": "Knowledge graph",
+    "url": "https://en.wikipedia.org/wiki/Knowledge_graph",
+    "revision_id": 1382603053,
+    "revision_time": "2026-10-29T12:32:42Z",
+    "words": 1383,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "yago",
+    "title": "YAGO (database)",
+    "url": "https://en.wikipedia.org/wiki/YAGO_(database)",
+    "revision_id": 1377075705,
+    "revision_time": "2026-09-27T19:48:59Z",
+    "words": 185,
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "cyc",
+    "title": "Cyc",
+    "url": "https://en.wikipedia.org/wiki/Cyc",
+    "revision_id": 1381274628,
+    "revision_time": "2026-10-21T06:29:01Z",
+    "words": 1254,
+    "license": "CC BY-SA 4.0"
+  }
+]

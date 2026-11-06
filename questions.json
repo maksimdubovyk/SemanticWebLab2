@@ -1,0 +1,14 @@
+[
+  {"id": "Q1", "kind": "simple", "question": "When was the acquisition of Metaweb by Google announced?",
+   "answer": "16 July 2010", "source": "freebase"},
+  {"id": "Q2", "kind": "simple", "question": "Who initiated DBpedia and in which year?",
+   "answer": "2007: Sören Auer, Christian Bizer, Georgi Kobilarov, Jens Lehmann, Richard Cyganiak and Zachary Ives", "source": "dbpedia"},
+  {"id": "Q3", "kind": "simple", "question": "Who were the co-chairs of the W3C working group on the ontology language that started work on November 1, 2001?",
+   "answer": "James Hendler and Guus Schreiber", "source": "owl"},
+  {"id": "Q4", "kind": "simple", "question": "Who began the Cyc project, when, and at which organization?",
+   "answer": "Douglas Lenat, July 1984, Microelectronics and Computer Technology Corporation (MCC)", "source": "cyc"},
+  {"id": "Q5", "kind": "global", "question": "Who are the key figures of the Semantic Web and knowledge base movement, and how are they connected to each other and to organizations?",
+   "answer": null, "source": "кілька документів"},
+  {"id": "Q6", "kind": "global", "question": "How do the major knowledge bases and web standards depend on one another, and what recurring patterns explain how these projects evolved?",
+   "answer": null, "source": "кілька документів"}
+]
